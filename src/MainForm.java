@@ -1,5 +1,14 @@
 
+import Screens.AltaDocenteScreen;
+import Screens.InicioScreen;
+import Screens.AltaDatosProfecionalesScreen;
+import Screens.ConsultaDocenteScreen;
+import Screens.ConsultaPerfilScreen;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -9,12 +18,20 @@ public class MainForm extends javax.swing.JFrame {
     
     InicioScreen inicioScreen = new InicioScreen();
     AltaDocenteScreen altaDocenteScreen = new AltaDocenteScreen();
+    AltaDatosProfecionalesScreen altaDatosProfecionalesScreen = new AltaDatosProfecionalesScreen();
+    ConsultaDocenteScreen consultaDocenteScreen = new ConsultaDocenteScreen();
+    ConsultaPerfilScreen consultaPerfilScreen = new ConsultaPerfilScreen();
     
     public MainForm() {
         initComponents();
+        
+        //Init visible Screens
         container.add(inicioScreen);
         inicioScreen.setVisible(true);
         altaDocenteScreen.setVisible(false);
+        altaDatosProfecionalesScreen.setVisible(false);
+        consultaDocenteScreen.setVisible(false);
+        consultaPerfilScreen.setVisible(false);
     }
 
     /**
@@ -34,11 +51,11 @@ public class MainForm extends javax.swing.JFrame {
         altaDocentes = new javax.swing.JMenuItem();
         altaDatosProfecionales = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        consultaDocenteMenu = new javax.swing.JMenuItem();
+        ConsultaPerfilMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(800, 500));
 
         container.setLayout(new java.awt.BorderLayout());
         getContentPane().add(container, java.awt.BorderLayout.CENTER);
@@ -66,27 +83,32 @@ public class MainForm extends javax.swing.JFrame {
         jMenu3.add(altaDocentes);
 
         altaDatosProfecionales.setText("Alta de Datos Profecionales");
+        altaDatosProfecionales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaDatosProfecionalesActionPerformed(evt);
+            }
+        });
         jMenu3.add(altaDatosProfecionales);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultas");
 
-        jMenuItem3.setText("Consulta Docente");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        consultaDocenteMenu.setText("Consulta Docente");
+        consultaDocenteMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                consultaDocenteMenuActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        jMenu4.add(consultaDocenteMenu);
 
-        jMenuItem4.setText("Consuta Perfil");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        ConsultaPerfilMenu.setText("Consuta Perfil");
+        ConsultaPerfilMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                ConsultaPerfilMenuActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(ConsultaPerfilMenu);
 
         jMenuBar1.add(jMenu4);
 
@@ -95,21 +117,47 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void consultaDocenteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDocenteMenuActionPerformed
+       if(consultaDocenteScreen.isVisible()){
+           
+       }else{
+           inicioScreen.setVisible(false);
+           altaDatosProfecionalesScreen.setVisible(false);
+           altaDocenteScreen.setVisible(false);
+           consultaPerfilScreen.setVisible(false);
+           
+           container.add(consultaDocenteScreen);
+           consultaDocenteScreen.setVisible(true);
+       }
+    }//GEN-LAST:event_consultaDocenteMenuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void ConsultaPerfilMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPerfilMenuActionPerformed
+        if(consultaPerfilScreen.isVisible()){
+            
+        }else{
+            inicioScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            altaDocenteScreen.setVisible(false);
+            consultaDocenteScreen.setVisible(false);
+            
+            container.add(consultaPerfilScreen);
+            
+            consultaPerfilScreen.setVisible(true);
+            
+            
+        }
+    }//GEN-LAST:event_ConsultaPerfilMenuActionPerformed
 
     private void altaDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDocentesActionPerformed
         if(altaDocenteScreen.isVisible()){
             System.out.println("Estas en la ventana");
         }else{
-            container.add(altaDocenteScreen);
-            
             inicioScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            consultaPerfilScreen.setVisible(false);
+            consultaDocenteScreen.setVisible(false);
+            
+            container.add(altaDocenteScreen);
             altaDocenteScreen.setVisible(true);
             
         }
@@ -119,19 +167,55 @@ public class MainForm extends javax.swing.JFrame {
         if(inicioScreen.isVisible()){
             
         }else{
-            altaDocenteScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            consultaPerfilScreen.setVisible(false);
+            consultaDocenteScreen.setVisible(false);
+            
             inicioScreen.setVisible(true);
         }
     }//GEN-LAST:event_inicioMouseClicked
+
+    private void altaDatosProfecionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDatosProfecionalesActionPerformed
+        if(altaDatosProfecionalesScreen.isVisible()){
+            
+        }else{
+            inicioScreen.setVisible(false);
+            altaDocenteScreen.setVisible(false);
+            consultaPerfilScreen.setVisible(false);
+            consultaDocenteScreen.setVisible(false);
+            
+            container.add(altaDatosProfecionalesScreen);            
+            altaDatosProfecionalesScreen.setVisible(true);
+          
+            
+        }
+    }//GEN-LAST:event_altaDatosProfecionalesActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        //DB conexion
-        Conexion cc = new Conexion();
-        Connection cn = (Connection) cc.conectar();
+      
+        try {
+                    //DB conexion
+            Conexion cc = new Conexion();
+             Connection cn = cc.conectar();
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
+            
+            ps.setInt(1, 11);
+            ps.setString(2, "Fernando");
+            ps.setString(3, "Torres");
+            ps.setString(4, "002021jk");
+            ps.setString(5, "Casado");
+            ps.setString(6, "Guadalajara");
+            ps.setString(7, "3341643969");
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -165,15 +249,15 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ConsultaPerfilMenu;
     private javax.swing.JMenuItem altaDatosProfecionales;
     private javax.swing.JMenuItem altaDocentes;
+    private javax.swing.JMenuItem consultaDocenteMenu;
     private javax.swing.JPanel container;
     private javax.swing.JMenu inicio;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }

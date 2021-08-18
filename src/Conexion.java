@@ -8,13 +8,13 @@ import java.sql.*;
  */
 public class Conexion {
     
-    Connection conectar = null;
+    private static java.sql.Connection conectar = null;
     
-    public Connection conectar(){
+    public java.sql.Connection conectar(){
         
         try{
             Class.forName("org.sqlite.JDBC");
-            conectar = (Connection) DriverManager.getConnection("jdbc:sqlite:escuelaClinica.db");
+            conectar = DriverManager.getConnection("jdbc:sqlite:escuelaClinica.db");
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
