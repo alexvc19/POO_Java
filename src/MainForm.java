@@ -6,12 +6,13 @@ import java.sql.Connection;
  * @author alejandrovelasco
  */
 public class MainForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainForm
-     */
+    
+    InicioScreen inicioScreen = new InicioScreen();
+    
     public MainForm() {
         initComponents();
+        container.add(inicioScreen);
+        inicioScreen.setVisible(true);
     }
 
     /**
@@ -23,7 +24,7 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        container = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -35,19 +36,10 @@ public class MainForm extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 300));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 256, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        container.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(container, java.awt.BorderLayout.CENTER);
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(75, 44));
         jMenuBar1.setSize(new java.awt.Dimension(75, 44));
@@ -140,6 +132,7 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel container;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -149,6 +142,5 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
