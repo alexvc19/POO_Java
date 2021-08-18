@@ -1,4 +1,5 @@
 
+import Model.Conexion;
 import Screens.AltaDocenteScreen;
 import Screens.InicioScreen;
 import Screens.AltaDatosProfecionalesScreen;
@@ -167,11 +168,13 @@ public class MainForm extends javax.swing.JFrame {
         if(inicioScreen.isVisible()){
             
         }else{
-            altaDatosProfecionalesScreen.setVisible(false);
+           
+            altaDocenteScreen.setVisible(false);
             altaDatosProfecionalesScreen.setVisible(false);
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             
+            container.add(inicioScreen);
             inicioScreen.setVisible(true);
         }
     }//GEN-LAST:event_inicioMouseClicked
@@ -203,6 +206,7 @@ public class MainForm extends javax.swing.JFrame {
              Connection cn = cc.conectar();
             PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
             
+            /* Prueba de setting
             ps.setInt(1, 11);
             ps.setString(2, "Fernando");
             ps.setString(3, "Torres");
@@ -210,8 +214,9 @@ public class MainForm extends javax.swing.JFrame {
             ps.setString(5, "Casado");
             ps.setString(6, "Guadalajara");
             ps.setString(7, "3341643969");
+            */
             
-            ps.executeUpdate();
+            //ps.executeUpdate();
             
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
