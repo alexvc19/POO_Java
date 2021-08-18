@@ -8,11 +8,13 @@ import java.sql.Connection;
 public class MainForm extends javax.swing.JFrame {
     
     InicioScreen inicioScreen = new InicioScreen();
+    AltaDocenteScreen altaDocenteScreen = new AltaDocenteScreen();
     
     public MainForm() {
         initComponents();
         container.add(inicioScreen);
         inicioScreen.setVisible(true);
+        altaDocenteScreen.setVisible(false);
     }
 
     /**
@@ -26,11 +28,11 @@ public class MainForm extends javax.swing.JFrame {
 
         container = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        inicio = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        altaDocentes = new javax.swing.JMenuItem();
+        altaDatosProfecionales = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -44,17 +46,27 @@ public class MainForm extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(75, 44));
         jMenuBar1.setSize(new java.awt.Dimension(75, 44));
 
-        jMenu1.setText("Inicio");
-        jMenuBar1.add(jMenu1);
+        inicio.setText("Inicio");
+        inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inicioMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(inicio);
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Datos Personales");
 
-        jMenuItem1.setText("Alta de Docente");
-        jMenu3.add(jMenuItem1);
+        altaDocentes.setText("Alta de Docente");
+        altaDocentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaDocentesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(altaDocentes);
 
-        jMenuItem2.setText("Alta de Datos Profecionales");
-        jMenu3.add(jMenuItem2);
+        altaDatosProfecionales.setText("Alta de Datos Profecionales");
+        jMenu3.add(altaDatosProfecionales);
 
         jMenuBar1.add(jMenu3);
 
@@ -90,6 +102,27 @@ public class MainForm extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void altaDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDocentesActionPerformed
+        if(altaDocenteScreen.isVisible()){
+            System.out.println("Estas en la ventana");
+        }else{
+            container.add(altaDocenteScreen);
+            
+            inicioScreen.setVisible(false);
+            altaDocenteScreen.setVisible(true);
+            
+        }
+    }//GEN-LAST:event_altaDocentesActionPerformed
+
+    private void inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioMouseClicked
+        if(inicioScreen.isVisible()){
+            
+        }else{
+            altaDocenteScreen.setVisible(false);
+            inicioScreen.setVisible(true);
+        }
+    }//GEN-LAST:event_inicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -132,14 +165,14 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem altaDatosProfecionales;
+    private javax.swing.JMenuItem altaDocentes;
     private javax.swing.JPanel container;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu inicio;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
