@@ -1,5 +1,11 @@
 package Screens;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +23,12 @@ public class InicioScreen extends javax.swing.JPanel {
      */
     public InicioScreen() {
         initComponents();
+        try{
+            logotype.setIcon(setIcon("/imagenes/logo.png", logotype));
+        }catch(Exception e){
+            System.err.println(e);
+        }
+        
     }
 
     /**
@@ -32,6 +44,8 @@ public class InicioScreen extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        body = new javax.swing.JPanel();
+        logotype = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -50,13 +64,29 @@ public class InicioScreen extends javax.swing.JPanel {
         jPanel2.add(jLabel2);
 
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
+
+        body.add(logotype);
+
+        add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+        public Icon setIcon(String url, JLabel menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 150;
+        int alto = 200;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel body;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logotype;
     // End of variables declaration//GEN-END:variables
 }

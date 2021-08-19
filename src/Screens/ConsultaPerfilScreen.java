@@ -5,6 +5,11 @@
  */
 package Screens;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author alejandrovelasco
@@ -16,6 +21,12 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
      */
     public ConsultaPerfilScreen() {
         initComponents();
+         try{
+            btnBuscar.setIcon(setIcon("/imagenes/search1.png",btnBuscar));
+        }catch(Exception e){
+            System.err.println(e);
+        }
+        
     }
 
     /**
@@ -34,7 +45,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         controlsPane1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -67,13 +78,13 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         controlsPane.setBackground(new java.awt.Color(255, 204, 255));
         controlsPane.setMaximumSize(new java.awt.Dimension(32767, 35));
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
-        controlsPane.add(jButton1);
+        controlsPane.add(btnBuscar);
 
         body.add(controlsPane);
 
@@ -99,16 +110,26 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
+    public Icon setIcon(String url, JButton menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 24;
+        int alto = 24;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel controlsPane1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

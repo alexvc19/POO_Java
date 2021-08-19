@@ -5,6 +5,19 @@
  */
 package Screens;
 
+import Model.Conexion;
+import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alejandrovelasco
@@ -16,6 +29,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
      */
     public AltaDatosProfecionalesScreen() {
         initComponents();
+        
+        btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
+        
     }
 
     /**
@@ -32,18 +48,18 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         body = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtExperiencia = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtTrabajo = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtEspecialidad = new javax.swing.JTextField();
         controls = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -68,9 +84,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(120, 17));
         jPanel1.add(jLabel2);
 
-        jTextField1.setToolTipText("");
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 23));
-        jPanel1.add(jTextField1);
+        txtExperiencia.setToolTipText("");
+        txtExperiencia.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel1.add(txtExperiencia);
 
         body.add(jPanel1);
 
@@ -83,9 +99,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(120, 17));
         jPanel2.add(jLabel3);
 
-        jTextField2.setToolTipText("");
-        jTextField2.setPreferredSize(new java.awt.Dimension(200, 23));
-        jPanel2.add(jTextField2);
+        txtTrabajo.setToolTipText("");
+        txtTrabajo.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel2.add(txtTrabajo);
 
         body.add(jPanel2);
 
@@ -98,9 +114,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jLabel4.setPreferredSize(new java.awt.Dimension(120, 17));
         jPanel3.add(jLabel4);
 
-        jTextField3.setToolTipText("");
-        jTextField3.setPreferredSize(new java.awt.Dimension(200, 23));
-        jPanel3.add(jTextField3);
+        txtCedula.setToolTipText("");
+        txtCedula.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel3.add(txtCedula);
 
         body.add(jPanel3);
 
@@ -113,9 +129,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jLabel5.setPreferredSize(new java.awt.Dimension(120, 17));
         jPanel4.add(jLabel5);
 
-        jTextField4.setToolTipText("");
-        jTextField4.setPreferredSize(new java.awt.Dimension(200, 23));
-        jPanel4.add(jTextField4);
+        txtEspecialidad.setToolTipText("");
+        txtEspecialidad.setPreferredSize(new java.awt.Dimension(200, 23));
+        jPanel4.add(txtEspecialidad);
 
         body.add(jPanel4);
 
@@ -124,20 +140,73 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         controls.setPreferredSize(new java.awt.Dimension(490, 44));
         controls.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        jButton1.setText("Guardar");
-        controls.add(jButton1);
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        controls.add(btnGuardar);
 
         body.add(controls);
 
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+         try {
+            //DB conexion
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO datos_profecionales VALUES(?,?,?,?);");
+
+            if (txtExperiencia.getText().isEmpty()
+                    || txtTrabajo.getText().isEmpty()
+                    || txtCedula.getText().isEmpty()
+                    || txtEspecialidad.getText().isEmpty()){
+
+                JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                ps.setString(1, txtExperiencia.getText());
+                ps.setString(2, txtTrabajo.getText());
+                ps.setString(3, txtCedula.getText());
+                ps.setString(4, txtEspecialidad.getText());
+                
+                ps.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Registro Exitoso",
+                        "Hey!", JOptionPane.INFORMATION_MESSAGE);
+
+                txtEspecialidad.setText("");
+                txtTrabajo.setText("");
+                txtCedula.setText("");
+                txtExperiencia.setText("");
+               
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    public Icon setIcon(String url, JButton menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 24;
+        int alto = 24;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel controls;
     private javax.swing.JPanel head;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -147,9 +216,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtEspecialidad;
+    private javax.swing.JTextField txtExperiencia;
+    private javax.swing.JTextField txtTrabajo;
     // End of variables declaration//GEN-END:variables
 }

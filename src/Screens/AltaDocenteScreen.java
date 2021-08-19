@@ -1,11 +1,15 @@
 package Screens;
 
 import Model.Conexion;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /*
@@ -25,6 +29,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     public AltaDocenteScreen() {
         initComponents();
 
+        btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
     }
 
     /**
@@ -61,7 +66,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         controls = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -197,29 +202,25 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         flowLayout1.setAlignOnBaseline(true);
         controls.setLayout(flowLayout1);
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        controls.add(jButton1);
+        controls.add(btnGuardar);
 
         body.add(controls);
 
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
             //DB conexion
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
             PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
-
-            String id = txtID.getText();
-
-            System.out.println("Es " + id);
 
             if (txtID.getText().isEmpty()
                     || txtNombre.getText().isEmpty()
@@ -257,14 +258,24 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_btnGuardarActionPerformed
+    public Icon setIcon(String url, JButton menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 24;
+        int alto = 24;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel controls;
     private javax.swing.JPanel head;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

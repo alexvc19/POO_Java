@@ -5,6 +5,12 @@
  */
 package Screens;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author alejandrovelasco
@@ -16,6 +22,13 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
      */
     public ConsultaDocenteScreen() {
         initComponents();
+        
+        try{
+            btnBuscar.setIcon(setIcon("/imagenes/search1.png",btnBuscar));
+        }catch(Exception e){
+            System.err.println(e);
+        }
+        
     }
 
     /**
@@ -34,7 +47,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -68,8 +81,8 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         controlsPane.setMaximumSize(new java.awt.Dimension(32767, 44));
         controlsPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        jButton1.setText("Buscar");
-        controlsPane.add(jButton1);
+        btnBuscar.setText("Buscar");
+        controlsPane.add(btnBuscar);
 
         body.add(controlsPane);
 
@@ -91,12 +104,23 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    public Icon setIcon(String url, JButton menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 24;
+        int alto = 24;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel head;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

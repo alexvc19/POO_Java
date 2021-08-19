@@ -12,17 +12,15 @@
         </Property>
       </Properties>
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="inicio">
+        <Menu class="javax.swing.JMenu" name="inicioM">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inicio"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inicioMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inicioMMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="datosM">
           <Properties>
             <Property name="text" type="java.lang.String" value="Datos Personales"/>
           </Properties>
@@ -45,7 +43,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="consultM">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>

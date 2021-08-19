@@ -5,27 +5,46 @@ import Screens.InicioScreen;
 import Screens.AltaDatosProfecionalesScreen;
 import Screens.ConsultaDocenteScreen;
 import Screens.ConsultaPerfilScreen;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.PreparedStatement;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
  * @author alejandrovelasco
  */
 public class MainForm extends javax.swing.JFrame {
-    
+
     InicioScreen inicioScreen = new InicioScreen();
     AltaDocenteScreen altaDocenteScreen = new AltaDocenteScreen();
     AltaDatosProfecionalesScreen altaDatosProfecionalesScreen = new AltaDatosProfecionalesScreen();
     ConsultaDocenteScreen consultaDocenteScreen = new ConsultaDocenteScreen();
     ConsultaPerfilScreen consultaPerfilScreen = new ConsultaPerfilScreen();
-    
+
     public MainForm() {
         initComponents();
-        
+        try {
+            inicioM.setIcon(setIcon("/imagenes/Home.png", inicioM));
+            consultM.setIcon(setIcon("/imagenes/search.png", consultM));
+            datosM.setIcon(setIcon("/imagenes/teamwork.png", datosM));
+
+            altaDocentes.setIcon(setIconItem("/imagenes/stamped.png", altaDocentes));
+            altaDatosProfecionales.setIcon(setIconItem("/imagenes/edit.png", altaDatosProfecionales));
+            
+            consultaDocenteMenu.setIcon(setIconItem("/imagenes/look.png", consultaDocenteMenu));
+            ConsultaPerfilMenu.setIcon(setIconItem("/imagenes/look2.png", consultaDocenteMenu));
+            
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
         //Init visible Screens
         container.add(inicioScreen);
         inicioScreen.setVisible(true);
@@ -46,12 +65,11 @@ public class MainForm extends javax.swing.JFrame {
 
         container = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        inicio = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        inicioM = new javax.swing.JMenu();
+        datosM = new javax.swing.JMenu();
         altaDocentes = new javax.swing.JMenuItem();
         altaDatosProfecionales = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        consultM = new javax.swing.JMenu();
         consultaDocenteMenu = new javax.swing.JMenuItem();
         ConsultaPerfilMenu = new javax.swing.JMenuItem();
 
@@ -64,16 +82,15 @@ public class MainForm extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(75, 44));
         jMenuBar1.setSize(new java.awt.Dimension(75, 44));
 
-        inicio.setText("Inicio");
-        inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+        inicioM.setText("Inicio");
+        inicioM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inicioMouseClicked(evt);
+                inicioMMouseClicked(evt);
             }
         });
-        jMenuBar1.add(inicio);
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(inicioM);
 
-        jMenu3.setText("Datos Personales");
+        datosM.setText("Datos Personales");
 
         altaDocentes.setText("Alta de Docente");
         altaDocentes.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +98,7 @@ public class MainForm extends javax.swing.JFrame {
                 altaDocentesActionPerformed(evt);
             }
         });
-        jMenu3.add(altaDocentes);
+        datosM.add(altaDocentes);
 
         altaDatosProfecionales.setText("Alta de Datos Profecionales");
         altaDatosProfecionales.addActionListener(new java.awt.event.ActionListener() {
@@ -89,11 +106,11 @@ public class MainForm extends javax.swing.JFrame {
                 altaDatosProfecionalesActionPerformed(evt);
             }
         });
-        jMenu3.add(altaDatosProfecionales);
+        datosM.add(altaDatosProfecionales);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(datosM);
 
-        jMenu4.setText("Consultas");
+        consultM.setText("Consultas");
 
         consultaDocenteMenu.setText("Consulta Docente");
         consultaDocenteMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +118,7 @@ public class MainForm extends javax.swing.JFrame {
                 consultaDocenteMenuActionPerformed(evt);
             }
         });
-        jMenu4.add(consultaDocenteMenu);
+        consultM.add(consultaDocenteMenu);
 
         ConsultaPerfilMenu.setText("Consuta Perfil");
         ConsultaPerfilMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +126,9 @@ public class MainForm extends javax.swing.JFrame {
                 ConsultaPerfilMenuActionPerformed(evt);
             }
         });
-        jMenu4.add(ConsultaPerfilMenu);
+        consultM.add(ConsultaPerfilMenu);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(consultM);
 
         setJMenuBar(jMenuBar1);
 
@@ -119,79 +136,77 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultaDocenteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDocenteMenuActionPerformed
-       if(consultaDocenteScreen.isVisible()){
-           
-       }else{
-           inicioScreen.setVisible(false);
-           altaDatosProfecionalesScreen.setVisible(false);
-           altaDocenteScreen.setVisible(false);
-           consultaPerfilScreen.setVisible(false);
-           
-           container.add(consultaDocenteScreen);
-           consultaDocenteScreen.setVisible(true);
-       }
+        if (consultaDocenteScreen.isVisible()) {
+
+        } else {
+            inicioScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            altaDocenteScreen.setVisible(false);
+            consultaPerfilScreen.setVisible(false);
+
+            container.add(consultaDocenteScreen);
+            consultaDocenteScreen.setVisible(true);
+        }
     }//GEN-LAST:event_consultaDocenteMenuActionPerformed
 
     private void ConsultaPerfilMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaPerfilMenuActionPerformed
-        if(consultaPerfilScreen.isVisible()){
-            
-        }else{
+        if (consultaPerfilScreen.isVisible()) {
+
+        } else {
             inicioScreen.setVisible(false);
             altaDatosProfecionalesScreen.setVisible(false);
             altaDocenteScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
-            
+
             container.add(consultaPerfilScreen);
-            
+
             consultaPerfilScreen.setVisible(true);
-            
-            
+
         }
     }//GEN-LAST:event_ConsultaPerfilMenuActionPerformed
 
     private void altaDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDocentesActionPerformed
-        if(altaDocenteScreen.isVisible()){
+        if (altaDocenteScreen.isVisible()) {
             System.out.println("Estas en la ventana");
-        }else{
+        } else {
             inicioScreen.setVisible(false);
             altaDatosProfecionalesScreen.setVisible(false);
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
-            
+
             container.add(altaDocenteScreen);
             altaDocenteScreen.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_altaDocentesActionPerformed
 
-    private void inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioMouseClicked
-        if(inicioScreen.isVisible()){
-            
-        }else{
-           
+    private void inicioMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicioMMouseClicked
+        if (inicioScreen.isVisible()) {
+
+        } else {
+
             altaDocenteScreen.setVisible(false);
             altaDatosProfecionalesScreen.setVisible(false);
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
-            
+
             container.add(inicioScreen);
             inicioScreen.setVisible(true);
         }
-    }//GEN-LAST:event_inicioMouseClicked
+    }//GEN-LAST:event_inicioMMouseClicked
 
     private void altaDatosProfecionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaDatosProfecionalesActionPerformed
-        if(altaDatosProfecionalesScreen.isVisible()){
-            
-        }else{
+        if (altaDatosProfecionalesScreen.isVisible()) {
+
+        } else {
             inicioScreen.setVisible(false);
             altaDocenteScreen.setVisible(false);
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
-            
-            container.add(altaDatosProfecionalesScreen);            
+
+            container.add(altaDatosProfecionalesScreen);
             altaDatosProfecionalesScreen.setVisible(true);
-          
-            
+
         }
     }//GEN-LAST:event_altaDatosProfecionalesActionPerformed
 
@@ -199,13 +214,13 @@ public class MainForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-      
+
         try {
-                    //DB conexion
+            //DB conexion
             Conexion cc = new Conexion();
-             Connection cn = cc.conectar();
+            Connection cn = cc.conectar();
             PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
-            
+
             /* Prueba de setting
             ps.setInt(1, 11);
             ps.setString(2, "Fernando");
@@ -214,14 +229,12 @@ public class MainForm extends javax.swing.JFrame {
             ps.setString(5, "Casado");
             ps.setString(6, "Guadalajara");
             ps.setString(7, "3341643969");
-            */
-            
+             */
             //ps.executeUpdate();
-            
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -253,16 +266,37 @@ public class MainForm extends javax.swing.JFrame {
         });
     }
 
+    public Icon setIcon(String url, JMenu menu) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+
+        int ancho = 24;
+        int alto = 24;
+
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+
+        return icono;
+    }
+
+    public Icon setIconItem(String url, JMenuItem menu) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+
+        int ancho = 24;
+        int alto = 24;
+
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+
+        return icono;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ConsultaPerfilMenu;
     private javax.swing.JMenuItem altaDatosProfecionales;
     private javax.swing.JMenuItem altaDocentes;
+    private javax.swing.JMenu consultM;
     private javax.swing.JMenuItem consultaDocenteMenu;
     private javax.swing.JPanel container;
-    private javax.swing.JMenu inicio;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu datosM;
+    private javax.swing.JMenu inicioM;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
