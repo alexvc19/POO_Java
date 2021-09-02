@@ -65,6 +65,9 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
+        text8 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtGradoAcad = new javax.swing.JTextField();
         controls = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
 
@@ -86,7 +89,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text1.setMaximumSize(new java.awt.Dimension(32767, 40));
         text1.setMinimumSize(new java.awt.Dimension(32767, 30));
         text1.setPreferredSize(new java.awt.Dimension(300, 45));
-        text1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 5));
+        text1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel2.setText("Id Docente");
         jLabel2.setPreferredSize(new java.awt.Dimension(70, 17));
@@ -112,8 +115,6 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtNombre.setPreferredSize(new java.awt.Dimension(200, 25));
         text2.add(txtNombre);
 
-        body.add(text2);
-
         text3.setBackground(new java.awt.Color(204, 204, 255));
         text3.setMaximumSize(new java.awt.Dimension(32767, 40));
         text3.setMinimumSize(new java.awt.Dimension(32767, 44));
@@ -128,7 +129,9 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtApellidos.setPreferredSize(new java.awt.Dimension(200, 25));
         text3.add(txtApellidos);
 
-        body.add(text3);
+        text2.add(text3);
+
+        body.add(text2);
 
         text4.setBackground(new java.awt.Color(204, 204, 255));
         text4.setMaximumSize(new java.awt.Dimension(32767, 40));
@@ -144,8 +147,6 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtRfc.setPreferredSize(new java.awt.Dimension(200, 25));
         text4.add(txtRfc);
 
-        body.add(text4);
-
         text5.setBackground(new java.awt.Color(204, 204, 255));
         text5.setMaximumSize(new java.awt.Dimension(32767, 40));
         text5.setMinimumSize(new java.awt.Dimension(32767, 44));
@@ -160,7 +161,9 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtDireccion.setPreferredSize(new java.awt.Dimension(200, 25));
         text5.add(txtDireccion);
 
-        body.add(text5);
+        text4.add(text5);
+
+        body.add(text4);
 
         text6.setBackground(new java.awt.Color(204, 204, 255));
         text6.setMaximumSize(new java.awt.Dimension(32767, 40));
@@ -176,8 +179,6 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtEstadoCivil.setPreferredSize(new java.awt.Dimension(200, 25));
         text6.add(txtEstadoCivil);
 
-        body.add(text6);
-
         text7.setBackground(new java.awt.Color(204, 204, 255));
         text7.setMaximumSize(new java.awt.Dimension(32767, 40));
         text7.setMinimumSize(new java.awt.Dimension(32767, 44));
@@ -192,7 +193,26 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtTelefono.setPreferredSize(new java.awt.Dimension(200, 25));
         text7.add(txtTelefono);
 
-        body.add(text7);
+        text6.add(text7);
+
+        body.add(text6);
+
+        text8.setBackground(new java.awt.Color(204, 204, 255));
+        text8.setMaximumSize(new java.awt.Dimension(32767, 40));
+        text8.setMinimumSize(new java.awt.Dimension(32767, 30));
+        text8.setPreferredSize(new java.awt.Dimension(300, 45));
+        text8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+
+        jLabel9.setText("Ultimo grado de estudios");
+        jLabel9.setAutoscrolls(true);
+        jLabel9.setPreferredSize(new java.awt.Dimension(150, 17));
+        text8.add(jLabel9);
+
+        txtGradoAcad.setMinimumSize(new java.awt.Dimension(200, 23));
+        txtGradoAcad.setPreferredSize(new java.awt.Dimension(200, 25));
+        text8.add(txtGradoAcad);
+
+        body.add(text8);
 
         controls.setBackground(new java.awt.Color(204, 204, 255));
         controls.setMaximumSize(new java.awt.Dimension(32767, 50));
@@ -220,7 +240,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
             //DB conexion
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?,?);");
 
             if (txtID.getText().isEmpty()
                     || txtNombre.getText().isEmpty()
@@ -228,7 +248,8 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
                     || txtRfc.getText().isEmpty()
                     || txtEstadoCivil.getText().isEmpty()
                     || txtDireccion.getText().isEmpty()
-                    || txtTelefono.getText().isEmpty()) {
+                    || txtTelefono.getText().isEmpty()
+                    || txtGradoAcad.getText().isEmpty()){
 
                 JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
                         "Hey!", JOptionPane.ERROR_MESSAGE);
@@ -241,6 +262,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
                 ps.setString(5, txtEstadoCivil.getText());
                 ps.setString(6, txtDireccion.getText());
                 ps.setString(7, txtTelefono.getText());
+                ps.setString(8, txtGradoAcad.getText());
                 ps.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Registro Exitoso",
@@ -253,6 +275,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
                 txtEstadoCivil.setText("");
                 txtDireccion.setText("");
                 txtTelefono.setText("");
+                txtGradoAcad.setText("");
             }
 
         } catch (SQLException ex) {
@@ -284,6 +307,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel text1;
     private javax.swing.JPanel text2;
     private javax.swing.JPanel text3;
@@ -291,9 +315,11 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     private javax.swing.JPanel text5;
     private javax.swing.JPanel text6;
     private javax.swing.JPanel text7;
+    private javax.swing.JPanel text8;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEstadoCivil;
+    private javax.swing.JTextField txtGradoAcad;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtRfc;

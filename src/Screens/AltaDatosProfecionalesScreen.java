@@ -46,6 +46,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         head = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtIdDocente = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtExperiencia = new javax.swing.JTextField();
@@ -75,6 +78,21 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         body.setBackground(new java.awt.Color(204, 255, 204));
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
+        jPanel5.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel5.setMaximumSize(new java.awt.Dimension(32767, 44));
+        jPanel5.setPreferredSize(new java.awt.Dimension(490, 44));
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+
+        jLabel6.setText("Id del docente");
+        jLabel6.setPreferredSize(new java.awt.Dimension(120, 17));
+        jPanel5.add(jLabel6);
+
+        txtIdDocente.setToolTipText("");
+        txtIdDocente.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel5.add(txtIdDocente);
+
+        body.add(jPanel5);
+
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 44));
@@ -85,7 +103,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jPanel1.add(jLabel2);
 
         txtExperiencia.setToolTipText("");
-        txtExperiencia.setPreferredSize(new java.awt.Dimension(200, 23));
+        txtExperiencia.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel1.add(txtExperiencia);
 
         body.add(jPanel1);
@@ -100,7 +118,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jPanel2.add(jLabel3);
 
         txtTrabajo.setToolTipText("");
-        txtTrabajo.setPreferredSize(new java.awt.Dimension(200, 23));
+        txtTrabajo.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel2.add(txtTrabajo);
 
         body.add(jPanel2);
@@ -115,7 +133,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jPanel3.add(jLabel4);
 
         txtCedula.setToolTipText("");
-        txtCedula.setPreferredSize(new java.awt.Dimension(200, 23));
+        txtCedula.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel3.add(txtCedula);
 
         body.add(jPanel3);
@@ -130,7 +148,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
         jPanel4.add(jLabel5);
 
         txtEspecialidad.setToolTipText("");
-        txtEspecialidad.setPreferredSize(new java.awt.Dimension(200, 23));
+        txtEspecialidad.setPreferredSize(new java.awt.Dimension(200, 30));
         jPanel4.add(txtEspecialidad);
 
         body.add(jPanel4);
@@ -158,12 +176,13 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
             //DB conexion
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO datos_profecionales VALUES(?,?,?,?);");
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO datos_profecionales VALUES(?,?,?,?,?);");
 
             if (txtExperiencia.getText().isEmpty()
                     || txtTrabajo.getText().isEmpty()
                     || txtCedula.getText().isEmpty()
-                    || txtEspecialidad.getText().isEmpty()){
+                    || txtEspecialidad.getText().isEmpty()
+                    || txtIdDocente.getText().isEmpty()){
 
                 JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
                         "Hey!", JOptionPane.ERROR_MESSAGE);
@@ -173,6 +192,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
                 ps.setString(2, txtTrabajo.getText());
                 ps.setString(3, txtCedula.getText());
                 ps.setString(4, txtEspecialidad.getText());
+                ps.setString(5, txtIdDocente.getText());
                 
                 ps.executeUpdate();
 
@@ -183,6 +203,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
                 txtTrabajo.setText("");
                 txtCedula.setText("");
                 txtExperiencia.setText("");
+                txtIdDocente.setText("");
                
             }
 
@@ -212,13 +233,16 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtExperiencia;
+    private javax.swing.JTextField txtIdDocente;
     private javax.swing.JTextField txtTrabajo;
     // End of variables declaration//GEN-END:variables
 }

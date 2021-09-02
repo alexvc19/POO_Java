@@ -214,27 +214,7 @@ public class MainForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
-        try {
-            //DB conexion
-            Conexion cc = new Conexion();
-            Connection cn = cc.conectar();
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?);");
-
-            /* Prueba de setting
-            ps.setInt(1, 11);
-            ps.setString(2, "Fernando");
-            ps.setString(3, "Torres");
-            ps.setString(4, "002021jk");
-            ps.setString(5, "Casado");
-            ps.setString(6, "Guadalajara");
-            ps.setString(7, "3341643969");
-             */
-            //ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+            
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
