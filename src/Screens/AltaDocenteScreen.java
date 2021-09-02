@@ -96,7 +96,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text1.add(jLabel2);
 
         txtID.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtID.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtID.setPreferredSize(new java.awt.Dimension(200, 30));
         text1.add(txtID);
 
         body.add(text1);
@@ -112,7 +112,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text2.add(jLabel3);
 
         txtNombre.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtNombre.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtNombre.setPreferredSize(new java.awt.Dimension(200, 30));
         text2.add(txtNombre);
 
         text3.setBackground(new java.awt.Color(204, 204, 255));
@@ -126,7 +126,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text3.add(jLabel4);
 
         txtApellidos.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtApellidos.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtApellidos.setPreferredSize(new java.awt.Dimension(200, 30));
         text3.add(txtApellidos);
 
         text2.add(text3);
@@ -144,7 +144,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text4.add(jLabel5);
 
         txtRfc.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtRfc.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtRfc.setPreferredSize(new java.awt.Dimension(200, 30));
         text4.add(txtRfc);
 
         text5.setBackground(new java.awt.Color(204, 204, 255));
@@ -158,7 +158,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text5.add(jLabel6);
 
         txtDireccion.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtDireccion.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtDireccion.setPreferredSize(new java.awt.Dimension(200, 30));
         text5.add(txtDireccion);
 
         text4.add(text5);
@@ -176,7 +176,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text6.add(jLabel7);
 
         txtEstadoCivil.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtEstadoCivil.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtEstadoCivil.setPreferredSize(new java.awt.Dimension(200, 30));
         text6.add(txtEstadoCivil);
 
         text7.setBackground(new java.awt.Color(204, 204, 255));
@@ -190,7 +190,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text7.add(jLabel8);
 
         txtTelefono.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtTelefono.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtTelefono.setPreferredSize(new java.awt.Dimension(200, 30));
         text7.add(txtTelefono);
 
         text6.add(text7);
@@ -209,7 +209,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         text8.add(jLabel9);
 
         txtGradoAcad.setMinimumSize(new java.awt.Dimension(200, 23));
-        txtGradoAcad.setPreferredSize(new java.awt.Dimension(200, 25));
+        txtGradoAcad.setPreferredSize(new java.awt.Dimension(200, 30));
         text8.add(txtGradoAcad);
 
         body.add(text8);

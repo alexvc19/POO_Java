@@ -5,11 +5,20 @@
  */
 package Screens;
 
+import Model.Conexion;
 import java.awt.Image;
+import java.sql.Connection;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.sqlite.SQLiteException;
 
 /**
  *
@@ -22,13 +31,13 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
      */
     public ConsultaDocenteScreen() {
         initComponents();
-        
-        try{
-            btnBuscar.setIcon(setIcon("/imagenes/search1.png",btnBuscar));
-        }catch(Exception e){
+
+        try {
+            btnBuscar.setIcon(setIcon("/imagenes/search1.png", btnBuscar));
+        } catch (Exception e) {
             System.err.println(e);
         }
-        
+
     }
 
     /**
@@ -45,12 +54,30 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         body = new javax.swing.JPanel();
         searchPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        btnBuscar1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        lbSucces = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lbApellidos = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        lbRFC = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        lbEstadoCiv = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        lbTelefono = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 153));
         setLayout(new java.awt.BorderLayout());
 
         head.setBackground(new java.awt.Color(255, 255, 102));
@@ -72,8 +99,8 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         jLabel2.setText("Numero de Empleado");
         searchPane.add(jLabel2);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 23));
-        searchPane.add(jTextField1);
+        txtSearch.setPreferredSize(new java.awt.Dimension(200, 30));
+        searchPane.add(txtSearch);
 
         body.add(searchPane);
 
@@ -82,50 +109,172 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         controlsPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         controlsPane.add(btnBuscar);
+
+        btnBuscar1.setText("Borrar busqueda");
+        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar1ActionPerformed(evt);
+            }
+        });
+        controlsPane.add(btnBuscar1);
 
         body.add(controlsPane);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id", "Nombre", "Apellidos", "Telefono", "Estado Civil", "Direccion", "RFC"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.PAGE_AXIS));
 
-        body.add(jScrollPane1);
+        jPanel7.setBackground(new java.awt.Color(255, 255, 153));
+
+        lbSucces.setBackground(new java.awt.Color(0, 255, 0));
+        lbSucces.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        jPanel7.add(lbSucces);
+
+        jPanel1.add(jPanel7);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setText("Nombre:");
+        jPanel2.add(jLabel3);
+        jPanel2.add(lbNombre);
+
+        jPanel1.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setText("Apellidos:");
+        jPanel3.add(jLabel5);
+        jPanel3.add(lbApellidos);
+
+        jPanel1.add(jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel7.setText("RFC:");
+        jPanel4.add(jLabel7);
+        jPanel4.add(lbRFC);
+
+        jPanel1.add(jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel9.setText("Estado civil:");
+        jPanel5.add(jLabel9);
+        jPanel5.add(lbEstadoCiv);
+
+        jPanel1.add(jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel11.setText("Telefono:");
+        jPanel6.add(jLabel11);
+        jPanel6.add(lbTelefono);
+
+        jPanel1.add(jPanel6);
+
+        body.add(jPanel1);
 
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public Icon setIcon(String url, JButton menu){
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        String sentence = "", id = "";
+        try {
+
+            if (txtSearch.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+
+                Statement st = cn.createStatement();
+                id = txtSearch.getText();
+                sentence = "SELECT * FROM docente where id==" + id;
+                ResultSet datos = st.executeQuery(sentence);
+                
+                lbSucces.setText("Registro encontrado");
+                //insert labels
+                lbNombre.setText(datos.getString("nombre"));
+                lbApellidos.setText(datos.getString("apellidos"));
+                lbRFC.setText(datos.getString("rfc"));
+                lbEstadoCiv.setText(datos.getString("estado_civil"));
+                lbTelefono.setText(datos.getString("telefono"));
+                
+                txtSearch.setText("");
+            }
+
+        } catch (SQLiteException e) {
+            System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+        lbSucces.setText("");
+        lbNombre.setText("");
+                lbApellidos.setText("");
+                lbRFC.setText("");
+                lbEstadoCiv.setText("");
+                lbTelefono.setText("");
+    }//GEN-LAST:event_btnBuscar1ActionPerformed
+
+    public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
-        
+
         int ancho = 24;
         int alto = 24;
-        
+
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
-        
+
         return icono;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lbApellidos;
+    private javax.swing.JLabel lbEstadoCiv;
+    private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbRFC;
+    private javax.swing.JLabel lbSucces;
+    private javax.swing.JLabel lbTelefono;
     private javax.swing.JPanel searchPane;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

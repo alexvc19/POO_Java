@@ -208,6 +208,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
+            
             Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

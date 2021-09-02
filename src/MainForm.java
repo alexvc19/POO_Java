@@ -30,6 +30,7 @@ public class MainForm extends javax.swing.JFrame {
 
     public MainForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
         try {
             inicioM.setIcon(setIcon("/imagenes/Home.png", inicioM));
             consultM.setIcon(setIcon("/imagenes/search.png", consultM));
