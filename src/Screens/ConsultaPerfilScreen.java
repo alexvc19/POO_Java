@@ -5,10 +5,19 @@
  */
 package Screens;
 
+import Model.Conexion;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import org.sqlite.SQLiteException;
 
 /**
  *
@@ -21,12 +30,12 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
      */
     public ConsultaPerfilScreen() {
         initComponents();
-         try{
-            btnBuscar.setIcon(setIcon("/imagenes/search1.png",btnBuscar));
-        }catch(Exception e){
+        try {
+            btnBuscar.setIcon(setIcon("/imagenes/search1.png", btnBuscar));
+        } catch (Exception e) {
             System.err.println(e);
         }
-        
+
     }
 
     /**
@@ -38,17 +47,42 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
         searchPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
+        btnBuscar1 = new javax.swing.JButton();
         controlsPane1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        panel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        lbGrado = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        lbCedula = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        lbExperiencia = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        lbEspecialidad = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        lbId = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        lbApellidos = new javax.swing.JLabel();
+
+        jLabel3.setText("jLabel3");
 
         setLayout(new java.awt.BorderLayout());
 
@@ -70,8 +104,8 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         jLabel2.setText("Buscar ID");
         searchPane.add(jLabel2);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(200, 23));
-        searchPane.add(jTextField1);
+        txtSearch.setPreferredSize(new java.awt.Dimension(200, 30));
+        searchPane.add(txtSearch);
 
         body.add(searchPane);
 
@@ -86,56 +120,191 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         });
         controlsPane.add(btnBuscar);
 
+        btnBuscar1.setText("Borrar busqueda");
+        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar1ActionPerformed(evt);
+            }
+        });
+        controlsPane.add(btnBuscar1);
+
         body.add(controlsPane);
 
         controlsPane1.setBackground(new java.awt.Color(255, 204, 255));
         controlsPane1.setMaximumSize(new java.awt.Dimension(32767, 35));
         body.add(controlsPane1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Ultimo grado", "Cedula", "Experiencia", "Expediente Clinico", "Expediente COVID", "Proyectos"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        body.add(jScrollPane1);
+        panel2.setLayout(new javax.swing.BoxLayout(panel2, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel4.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setText("Ultimo Grado de estudios");
+        jPanel4.add(jLabel8);
+        jPanel4.add(lbGrado);
+
+        panel2.add(jPanel4);
+
+        jPanel6.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel10.setText("Cedula Profecional");
+        jPanel6.add(jLabel10);
+        jPanel6.add(lbCedula);
+
+        panel2.add(jPanel6);
+
+        jPanel9.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel16.setText("Experiencia Laboral");
+        jPanel9.add(jLabel16);
+        jPanel9.add(lbExperiencia);
+
+        panel2.add(jPanel9);
+
+        jPanel10.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel18.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel18.setText("Especialidad");
+        jPanel10.add(jLabel18);
+        jPanel10.add(lbEspecialidad);
+
+        panel2.add(jPanel10);
+
+        jPanel2.add(panel2, java.awt.BorderLayout.CENTER);
+
+        jPanel12.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel22.setText("id");
+        jPanel12.add(jLabel22);
+        jPanel12.add(lbId);
+
+        jPanel11.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jPanel3.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setText("Nombre");
+        jPanel3.add(jLabel4);
+        jPanel3.add(lbNombre);
+
+        jPanel11.add(jPanel3);
+
+        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel20.setText("Apellidos");
+        jPanel11.add(jLabel20);
+        jPanel11.add(lbApellidos);
+
+        jPanel12.add(jPanel11);
+
+        jPanel2.add(jPanel12, java.awt.BorderLayout.PAGE_START);
+
+        body.add(jPanel2);
 
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        try {
+            //DB conexion
+            String id, sentence;
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+
+            if (txtSearch.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Statement st = cn.createStatement();
+                id = txtSearch.getText();
+                sentence = "SELECT * FROM  docente INNER JOIN datos_profecionales ON docente.id = datos_profecionales.id_docente WHERE docente.id ==" + id;
+                ResultSet datos = st.executeQuery(sentence);
+
+                //Labes
+                lbId.setText(datos.getString("id"));
+                lbNombre.setText(datos.getString("nombre"));
+                lbApellidos.setText(datos.getString("apellidos"));
+                lbGrado.setText(datos.getString("ultimoGrado"));
+                lbCedula.setText(datos.getString("cedula"));
+                lbExperiencia.setText(datos.getString("expediente_laboral"));
+                lbEspecialidad.setText(datos.getString("especialidad"));
+            }
+        } catch (SQLiteException e) {
+            Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, e);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    public Icon setIcon(String url, JButton menu){
+    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+        txtSearch.setText("");
+        lbId.setText("");
+        lbNombre.setText("");
+        lbApellidos.setText("");
+        lbGrado.setText("");
+        lbCedula.setText("");
+        lbExperiencia.setText("");
+        lbEspecialidad.setText("");
+
+    }//GEN-LAST:event_btnBuscar1ActionPerformed
+
+    public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
-        
+
         int ancho = 24;
         int alto = 24;
-        
+
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
-        
+
         return icono;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscar1;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel controlsPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lbApellidos;
+    private javax.swing.JLabel lbCedula;
+    private javax.swing.JLabel lbEspecialidad;
+    private javax.swing.JLabel lbExperiencia;
+    private javax.swing.JLabel lbGrado;
+    private javax.swing.JLabel lbId;
+    private javax.swing.JLabel lbNombre;
+    private javax.swing.JPanel panel2;
     private javax.swing.JPanel searchPane;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
