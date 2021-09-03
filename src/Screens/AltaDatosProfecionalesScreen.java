@@ -175,8 +175,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //DB conexion
-            Conexion cc = new Conexion();
-            Connection cn = cc.conectar();
+            
             String consult,stateRegister,id;
             id=txtIdDocente.getText();
             
@@ -191,7 +190,9 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
             }
         
         try {
-
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+            
             Statement nst = cn.createStatement();
             consult = "SELECT * FROM docente WHERE id="+id;
             ResultSet data = nst.executeQuery(consult);
@@ -219,11 +220,15 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
                 txtCedula.setText("");
                 txtExperiencia.setText("");
                 txtIdDocente.setText("");
+                ps.close();
             }
 
         } catch (SQLException ex) {
-            
+             JOptionPane.showMessageDialog(null, "El registro  esta inactivo o no se encuentra",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
             Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(AltaDatosProfecionalesScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

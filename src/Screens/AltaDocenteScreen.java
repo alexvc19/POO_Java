@@ -13,6 +13,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import org.sqlite.SQLiteException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,13 +31,13 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
      */
     public AltaDocenteScreen() {
         initComponents();
-        try{
+        try {
             btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
             btnDelete.setIcon(setIcon("/imagenes/delete.png", btnDelete));
-        }catch(Exception e){
-            
+        } catch (Exception e) {
+
         }
-        
+
     }
 
     /**
@@ -288,35 +289,26 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String id,consult,stateRegister;
         Conexion cc = new Conexion();
-        Connection cn = cc.conectar();
-        id = txtID.getText();
-        
         if (txtID.getText().isEmpty()
-                    || txtNombre.getText().isEmpty()
-                    || txtApellidos.getText().isEmpty()
-                    || txtRfc.getText().isEmpty()
-                    || txtEstadoCivil.getText().isEmpty()
-                    || txtDireccion.getText().isEmpty()
-                    || txtTelefono.getText().isEmpty()
-                    || txtGradoAcad.getText().isEmpty()) {
+                || txtNombre.getText().isEmpty()
+                || txtApellidos.getText().isEmpty()
+                || txtRfc.getText().isEmpty()
+                || txtEstadoCivil.getText().isEmpty()
+                || txtDireccion.getText().isEmpty()
+                || txtTelefono.getText().isEmpty()
+                || txtGradoAcad.getText().isEmpty()) {
 
-                JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
-                        "Hey!", JOptionPane.ERROR_MESSAGE);
-            }
-        
-        try {      
-            Statement nst = cn.createStatement();
-            consult = "SELECT * FROM docente WHERE id=="+id;
-            ResultSet data = nst.executeQuery(consult);
-            stateRegister = data.getString("id");       
+            JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
+                    "Hey!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        try {
+            String id, consult, stateRegister;
             
-            if(stateRegister.equals(id)){
-                JOptionPane.showMessageDialog(null, "El ID ya esta en uso digite uno diferente",
-                        "Hey!", JOptionPane.WARNING_MESSAGE);
-               
-            }else{
+            Connection cn = cc.conectar();
+            id = txtID.getText();
+            
                 PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?,?,?);");
                 ps.setString(1, txtID.getText());
                 ps.setString(2, txtNombre.getText());
@@ -340,11 +332,23 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
                 txtDireccion.setText("");
                 txtTelefono.setText("");
                 txtGradoAcad.setText("");
-            }
+                
+                ps.close();
+                cn.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().contains("SQLITE_CONSTRAINT_PRIMARYKEY")) {
+                JOptionPane.showMessageDialog(null, "El id ya esta en uso o es invalido digite uno diferente",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Error - Unique Key Violation!!");
+            } else {
+                System.out.println("Other Error: " + ex.getMessage());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtDeleteidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteidActionPerformed
@@ -352,35 +356,39 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDeleteidActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        String id, sentence, consult, stateRegister;
-        Conexion cc = new Conexion();
-        Connection cn = cc.conectar();
 
         try {
 
+            String id, sentence, consult, stateRegister;
+            Conexion cc = new Conexion();
+            Connection cn = cc.conectar();
+
             Statement st = cn.createStatement();
-            Statement nst = cn.createStatement();
+           
             id = txtDeleteid.getText();
 
             consult = "SELECT * FROM docente WHERE id=" + id;
-            ResultSet data = nst.executeQuery(consult);
+            ResultSet data = st.executeQuery(consult);
             stateRegister = data.getString("estado");
 
             //System.out.println(stateRegister);
-            if(stateRegister.equals("inactivo")){
+            if (stateRegister.equals("inactivo")) {
                 JOptionPane.showMessageDialog(null, "El registro ya esta inactivo",
                         "Hey!", JOptionPane.WARNING_MESSAGE);
                 txtDeleteid.setText("");
-            }else{
-                sentence = "UPDATE docente SET estado = 'inactivo' WHERE id="+id;
-                ResultSet datos = st.executeQuery(sentence);
+                st.close();
+            } else {
+                
+                txtDeleteid.setText("");
                 JOptionPane.showMessageDialog(null, "Se ha desactivado el registro",
                         "Hey!", JOptionPane.WARNING_MESSAGE);
-                txtDeleteid.setText("");
+                st.executeQuery("UPDATE docente SET estado = 'inactivo' WHERE id="+id);
+                
+                st.close();
             }
 
         } catch (Exception e) {
-
+              System.out.println(e);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
     public Icon setIcon(String url, JButton menu) {

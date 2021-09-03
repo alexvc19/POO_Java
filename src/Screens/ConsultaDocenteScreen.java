@@ -195,14 +195,15 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         String sentence = "", id = "",consult,stateRegister;
-        Conexion cc = new Conexion();
-        Connection cn = cc.conectar();
+
         id = txtSearch.getText();
         
         if (txtSearch.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
             } 
         try {
+                    Conexion cc = new Conexion();
+        Connection cn = cc.conectar();
             
             Statement nst = cn.createStatement();
             consult = "SELECT * FROM docente WHERE id=" + id;
@@ -236,6 +237,8 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
             //Logger.getLogger(ConsultaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
              System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed

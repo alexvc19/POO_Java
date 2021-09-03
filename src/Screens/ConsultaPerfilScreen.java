@@ -264,6 +264,8 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
             System.out.println(ex);
             //Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
 
+        } catch (Exception ex) {
+            Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
