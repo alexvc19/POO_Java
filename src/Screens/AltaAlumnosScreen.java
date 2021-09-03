@@ -29,26 +29,44 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         head = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        body = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jPanel25 = new javax.swing.JPanel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        txtCurp = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
@@ -63,122 +81,204 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         add(head, java.awt.BorderLayout.PAGE_START);
 
-        body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel1.setPreferredSize(new java.awt.Dimension(456, 0));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jPanel11.setPreferredSize(new java.awt.Dimension(300, 300));
+        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jLabel1.setText("Id");
-        jLabel1.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel1.add(jLabel1);
+        jLabel9.setText("jLabel9");
+        jPanel12.add(jLabel9);
 
-        txtid.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel1.add(txtid);
+        jTextField1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jTextField1);
 
-        body.add(jPanel1);
+        jPanel11.add(jPanel12);
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel2.setPreferredSize(new java.awt.Dimension(276, 0));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jLabel11.setText("jLabel9");
+        jPanel15.add(jLabel11);
 
-        jLabel2.setText("Nombre");
-        jLabel2.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel2.add(jLabel2);
+        jTextField3.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel15.add(jTextField3);
 
-        txtNombre.setNextFocusableComponent(txtid);
-        txtNombre.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel2.add(txtNombre);
+        jPanel11.add(jPanel15);
 
-        body.add(jPanel2);
+        jLabel12.setText("jLabel9");
+        jPanel16.add(jLabel12);
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel3.setPreferredSize(new java.awt.Dimension(554, 0));
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jTextField4.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel16.add(jTextField4);
 
-        jLabel3.setText("Direccion");
-        jLabel3.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel3.add(jLabel3);
+        jPanel11.add(jPanel16);
 
-        txtDireccion.setNextFocusableComponent(txtNombre);
-        txtDireccion.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel3.add(txtDireccion);
+        jLabel13.setText("jLabel9");
+        jPanel17.add(jLabel13);
 
-        body.add(jPanel3);
+        jTextField5.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel17.add(jTextField5);
 
-        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel4.setPreferredSize(new java.awt.Dimension(268, 0));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jPanel11.add(jPanel17);
 
-        jLabel4.setText("Correo");
-        jLabel4.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel4.add(jLabel4);
+        jLabel14.setText("jLabel9");
+        jPanel18.add(jLabel14);
 
-        txtCorreo.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel4.add(txtCorreo);
+        jTextField6.setPreferredSize(new java.awt.Dimension(200, 30));
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        jPanel18.add(jTextField6);
 
-        body.add(jPanel4);
+        jPanel11.add(jPanel18);
 
-        jPanel5.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel5.setPreferredSize(new java.awt.Dimension(554, 0));
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jLabel15.setText("jLabel9");
+        jPanel19.add(jLabel15);
 
-        jLabel5.setText("Telefono");
-        jLabel5.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel5.add(jLabel5);
+        jTextField7.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel19.add(jTextField7);
 
-        txtTelefono.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel5.add(txtTelefono);
+        jPanel11.add(jPanel19);
 
-        body.add(jPanel5);
+        jPanel10.add(jPanel11);
 
-        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel6.setPreferredSize(new java.awt.Dimension(265, 10));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jLabel6.setText("CURP");
-        jLabel6.setPreferredSize(new java.awt.Dimension(60, 17));
-        jPanel6.add(jLabel6);
+        jPanel14.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
-        txtCurp.setPreferredSize(new java.awt.Dimension(200, 30));
-        jPanel6.add(txtCurp);
+        jLabel10.setText("jLabel9");
+        jPanel14.add(jLabel10);
 
-        body.add(jPanel6);
+        jTextField2.setPreferredSize(new java.awt.Dimension(200, 30));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel14.add(jTextField2);
 
-        jPanel7.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel13.add(jPanel14);
+
+        jPanel20.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel20.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel16.setText("jLabel9");
+        jPanel20.add(jLabel16);
+
+        jTextField8.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel20.add(jTextField8);
+
+        jPanel13.add(jPanel20);
+
+        jPanel23.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel23.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel19.setText("jLabel9");
+        jPanel23.add(jLabel19);
+
+        jTextField11.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel23.add(jTextField11);
+
+        jPanel13.add(jPanel23);
+
+        jPanel24.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel24.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel20.setText("jLabel9");
+        jPanel24.add(jLabel20);
+
+        jTextField12.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel24.add(jTextField12);
+
+        jPanel13.add(jPanel24);
+
+        jPanel25.setPreferredSize(new java.awt.Dimension(0, 33));
+        jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel13.add(jPanel25);
+
+        jPanel26.setPreferredSize(new java.awt.Dimension(0, 33));
+        jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel13.add(jPanel26);
+
+        jPanel27.setPreferredSize(new java.awt.Dimension(0, 33));
+        jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel13.add(jPanel27);
+
+        jPanel28.setPreferredSize(new java.awt.Dimension(0, 33));
+        jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel13.add(jPanel28);
+
+        jPanel10.add(jPanel13);
+
+        add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(87, 60));
 
         jButton1.setText("Guardar");
-        jPanel7.add(jButton1);
+        jPanel1.add(jButton1);
 
-        body.add(jPanel7);
-
-        add(body, java.awt.BorderLayout.CENTER);
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel body;
     private javax.swing.JPanel head;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtCurp;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtid;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
