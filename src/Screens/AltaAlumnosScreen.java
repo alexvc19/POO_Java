@@ -64,8 +64,6 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
         jTextField12 = new javax.swing.JTextField();
         jPanel25 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
-        jPanel27 = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -81,10 +79,12 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         add(head, java.awt.BorderLayout.PAGE_START);
 
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel11.setPreferredSize(new java.awt.Dimension(300, 300));
         jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel9.setText("jLabel9");
         jPanel12.add(jLabel9);
@@ -146,10 +146,14 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel10.add(jPanel11);
 
+        jPanel13.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel14.setPreferredSize(new java.awt.Dimension(300, 42));
-        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        jPanel14.setMinimumSize(new java.awt.Dimension(136, 33));
+        jPanel14.setPreferredSize(new java.awt.Dimension(300, 20));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
+        flowLayout1.setAlignOnBaseline(true);
+        jPanel14.setLayout(flowLayout1);
 
         jLabel10.setText("jLabel9");
         jPanel14.add(jLabel10);
@@ -164,7 +168,8 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel14);
 
-        jPanel20.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel20.setMinimumSize(new java.awt.Dimension(136, 33));
+        jPanel20.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel20.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel16.setText("jLabel9");
@@ -175,18 +180,23 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel20);
 
-        jPanel23.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel23.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel23.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel19.setText("jLabel9");
         jPanel23.add(jLabel19);
 
         jTextField11.setPreferredSize(new java.awt.Dimension(200, 30));
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
         jPanel23.add(jTextField11);
 
         jPanel13.add(jPanel23);
 
-        jPanel24.setPreferredSize(new java.awt.Dimension(300, 42));
+        jPanel24.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel24.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel20.setText("jLabel9");
@@ -197,21 +207,13 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel24);
 
-        jPanel25.setPreferredSize(new java.awt.Dimension(0, 33));
-        jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel25.setPreferredSize(new java.awt.Dimension(300, 20));
+        jPanel25.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
         jPanel13.add(jPanel25);
 
-        jPanel26.setPreferredSize(new java.awt.Dimension(0, 33));
-        jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel26.setPreferredSize(new java.awt.Dimension(300, 20));
+        jPanel26.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
         jPanel13.add(jPanel26);
-
-        jPanel27.setPreferredSize(new java.awt.Dimension(0, 33));
-        jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel13.add(jPanel27);
-
-        jPanel28.setPreferredSize(new java.awt.Dimension(0, 33));
-        jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel13.add(jPanel28);
 
         jPanel10.add(jPanel13);
 
@@ -236,6 +238,10 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -268,8 +274,6 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
