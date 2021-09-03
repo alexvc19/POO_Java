@@ -32,6 +32,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         initComponents();
         try {
             btnBuscar.setIcon(setIcon("/imagenes/search1.png", btnBuscar));
+            btnDelete.setIcon(setIcon("/imagenes/delete.png", btnDelete));
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -56,7 +57,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         txtSearch = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         controlsPane1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panel2 = new javax.swing.JPanel();
@@ -120,13 +121,13 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         });
         controlsPane.add(btnBuscar);
 
-        btnBuscar1.setText("Borrar busqueda");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Borrar busqueda");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        controlsPane.add(btnBuscar1);
+        controlsPane.add(btnDelete);
 
         body.add(controlsPane);
 
@@ -216,17 +217,31 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        if (txtSearch.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
+            } 
         try {
             //DB conexion
-            String id, sentence;
+            String id, sentence, consult,stateRegister;
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-
-            if (txtSearch.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                Statement st = cn.createStatement();
-                id = txtSearch.getText();
+            
+            id = txtSearch.getText();
+            
+            Statement nst = cn.createStatement();
+            consult = "SELECT * FROM docente WHERE id=" + id;
+            ResultSet data = nst.executeQuery(consult);
+            stateRegister = data.getString("estado");
+            
+            if(stateRegister.equals("inactivo")){
+                JOptionPane.showMessageDialog(null, "El registro ya esta inactivo",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+               
+            }else{
+                 
+                 Statement st = cn.createStatement();
+       
                 sentence = "SELECT * FROM  docente INNER JOIN datos_profecionales ON docente.id = datos_profecionales.id_docente WHERE docente.id ==" + id;
                 ResultSet datos = st.executeQuery(sentence);
 
@@ -239,18 +254,20 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
                 lbExperiencia.setText(datos.getString("expediente_laboral"));
                 lbEspecialidad.setText(datos.getString("especialidad"));
             }
+
+            
         } catch (SQLiteException e) {
             System.out.println(e);
             //Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, e);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Registro No encontrado o los datos no han sido completados", "Hey!!", JOptionPane.ERROR_MESSAGE);
             System.out.println(ex);
             //Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         txtSearch.setText("");
         lbId.setText("");
         lbNombre.setText("");
@@ -260,7 +277,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         lbExperiencia.setText("");
         lbEspecialidad.setText("");
 
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
@@ -276,7 +293,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel controlsPane1;
     private javax.swing.JLabel jLabel1;

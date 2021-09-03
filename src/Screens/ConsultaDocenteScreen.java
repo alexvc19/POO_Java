@@ -34,6 +34,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         try {
             btnBuscar.setIcon(setIcon("/imagenes/search1.png", btnBuscar));
+            btnDelete.setIcon(setIcon("/imagenes/delete.png", btnDelete));
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -57,7 +58,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         txtSearch = new javax.swing.JTextField();
         controlsPane = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
-        btnBuscar1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         lbSucces = new javax.swing.JLabel();
@@ -116,13 +117,13 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         });
         controlsPane.add(btnBuscar);
 
-        btnBuscar1.setText("Borrar busqueda");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Borrar busqueda");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        controlsPane.add(btnBuscar1);
+        controlsPane.add(btnDelete);
 
         body.add(controlsPane);
 
@@ -193,17 +194,28 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        String sentence = "", id = "";
-        try {
-
-            if (txtSearch.getText().isEmpty()) {
+        String sentence = "", id = "",consult,stateRegister;
+        Conexion cc = new Conexion();
+        Connection cn = cc.conectar();
+        id = txtSearch.getText();
+        
+        if (txtSearch.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campo vacio", "Hey!!", JOptionPane.WARNING_MESSAGE);
-            } else {
-                Conexion cc = new Conexion();
-                Connection cn = cc.conectar();
-
+            } 
+        try {
+            
+            Statement nst = cn.createStatement();
+            consult = "SELECT * FROM docente WHERE id=" + id;
+            ResultSet data = nst.executeQuery(consult);
+            stateRegister = data.getString("estado");       
+            
+            if(stateRegister.equals("inactivo")){
+                JOptionPane.showMessageDialog(null, "El registro  esta inactivo",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+               
+            }else{
                 Statement st = cn.createStatement();
-                id = txtSearch.getText();
+         
                 sentence = "SELECT * FROM docente where id==" + id;
                 ResultSet datos = st.executeQuery(sentence);
                 
@@ -228,14 +240,14 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         lbSucces.setText("");
         lbNombre.setText("");
                 lbApellidos.setText("");
                 lbRFC.setText("");
                 lbEstadoCiv.setText("");
                 lbTelefono.setText("");
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
@@ -252,7 +264,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JPanel controlsPane;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;

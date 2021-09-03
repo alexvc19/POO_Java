@@ -9,7 +9,9 @@ import Model.Conexion;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -172,13 +174,13 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         try {
-            //DB conexion
+        //DB conexion
             Conexion cc = new Conexion();
             Connection cn = cc.conectar();
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO datos_profecionales VALUES(?,?,?,?,?);");
-
-            if (txtExperiencia.getText().isEmpty()
+            String consult,stateRegister,id;
+            id=txtIdDocente.getText();
+            
+        if (txtExperiencia.getText().isEmpty()
                     || txtTrabajo.getText().isEmpty()
                     || txtCedula.getText().isEmpty()
                     || txtEspecialidad.getText().isEmpty()
@@ -186,8 +188,21 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
                         "Hey!", JOptionPane.ERROR_MESSAGE);
-            } else {
+            }
+        
+        try {
 
+            Statement nst = cn.createStatement();
+            consult = "SELECT * FROM docente WHERE id="+id;
+            ResultSet data = nst.executeQuery(consult);
+            stateRegister = data.getString("estado");       
+            
+            if(stateRegister.equals("inactivo")){
+                JOptionPane.showMessageDialog(null, "El registro  esta inactivo o no se encuentra",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+               
+            }else{
+                PreparedStatement ps = cn.prepareStatement("INSERT INTO datos_profecionales VALUES(?,?,?,?,?);");
                 ps.setString(1, txtExperiencia.getText());
                 ps.setString(2, txtTrabajo.getText());
                 ps.setString(3, txtCedula.getText());
@@ -204,7 +219,6 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
                 txtCedula.setText("");
                 txtExperiencia.setText("");
                 txtIdDocente.setText("");
-               
             }
 
         } catch (SQLException ex) {

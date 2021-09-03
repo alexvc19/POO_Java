@@ -4,7 +4,9 @@ import Model.Conexion;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -28,8 +30,13 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
      */
     public AltaDocenteScreen() {
         initComponents();
-
-        btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
+        try{
+            btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
+            btnDelete.setIcon(setIcon("/imagenes/delete.png", btnDelete));
+        }catch(Exception e){
+            
+        }
+        
     }
 
     /**
@@ -70,6 +77,12 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtGradoAcad = new javax.swing.JTextField();
         controls = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        controls2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtDeleteid = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -232,29 +245,79 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(controls);
 
+        jSeparator1.setMaximumSize(new java.awt.Dimension(32767, 10));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
+        body.add(jSeparator1);
+
+        controls2.setBackground(new java.awt.Color(204, 204, 255));
+        controls2.setMaximumSize(new java.awt.Dimension(32767, 50));
+        controls2.setMinimumSize(new java.awt.Dimension(97, 50));
+        controls2.setPreferredSize(new java.awt.Dimension(97, 50));
+        java.awt.FlowLayout flowLayout3 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10);
+        flowLayout3.setAlignOnBaseline(true);
+        controls2.setLayout(flowLayout3);
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Eliminar un registro: ");
+        controls2.add(jLabel10);
+
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        jLabel11.setText("Id  Registro");
+        controls2.add(jLabel11);
+
+        txtDeleteid.setPreferredSize(new java.awt.Dimension(90, 30));
+        txtDeleteid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDeleteidActionPerformed(evt);
+            }
+        });
+        controls2.add(txtDeleteid);
+
+        body.add(controls2);
+
+        btnDelete.setText("Eliminar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        body.add(btnDelete);
+
         add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try {
-            //DB conexion
-            Conexion cc = new Conexion();
-            Connection cn = cc.conectar();
-            PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?,?);");
-
-            if (txtID.getText().isEmpty()
+        String id,consult,stateRegister;
+        Conexion cc = new Conexion();
+        Connection cn = cc.conectar();
+        id = txtID.getText();
+        
+        if (txtID.getText().isEmpty()
                     || txtNombre.getText().isEmpty()
                     || txtApellidos.getText().isEmpty()
                     || txtRfc.getText().isEmpty()
                     || txtEstadoCivil.getText().isEmpty()
                     || txtDireccion.getText().isEmpty()
                     || txtTelefono.getText().isEmpty()
-                    || txtGradoAcad.getText().isEmpty()){
+                    || txtGradoAcad.getText().isEmpty()) {
 
                 JOptionPane.showMessageDialog(null, "Tienes valores invalidos o nulos",
                         "Hey!", JOptionPane.ERROR_MESSAGE);
-            } else {
-
+            }
+        
+        try {      
+            Statement nst = cn.createStatement();
+            consult = "SELECT * FROM docente WHERE id=="+id;
+            ResultSet data = nst.executeQuery(consult);
+            stateRegister = data.getString("id");       
+            
+            if(stateRegister.equals(id)){
+                JOptionPane.showMessageDialog(null, "El ID ya esta en uso digite uno diferente",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+               
+            }else{
+                PreparedStatement ps = cn.prepareStatement("INSERT INTO docente VALUES(?,?,?,?,?,?,?,?,?);");
                 ps.setString(1, txtID.getText());
                 ps.setString(2, txtNombre.getText());
                 ps.setString(3, txtApellidos.getText());
@@ -263,6 +326,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
                 ps.setString(6, txtDireccion.getText());
                 ps.setString(7, txtTelefono.getText());
                 ps.setString(8, txtGradoAcad.getText());
+                ps.setString(9, "Activo");
                 ps.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Registro Exitoso",
@@ -282,24 +346,65 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
             Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
-    public Icon setIcon(String url, JButton menu){
+
+    private void txtDeleteidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDeleteidActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        String id, sentence, consult, stateRegister;
+        Conexion cc = new Conexion();
+        Connection cn = cc.conectar();
+
+        try {
+
+            Statement st = cn.createStatement();
+            Statement nst = cn.createStatement();
+            id = txtDeleteid.getText();
+
+            consult = "SELECT * FROM docente WHERE id=" + id;
+            ResultSet data = nst.executeQuery(consult);
+            stateRegister = data.getString("estado");
+
+            //System.out.println(stateRegister);
+            if(stateRegister.equals("inactivo")){
+                JOptionPane.showMessageDialog(null, "El registro ya esta inactivo",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+                txtDeleteid.setText("");
+            }else{
+                sentence = "UPDATE docente SET estado = 'inactivo' WHERE id="+id;
+                ResultSet datos = st.executeQuery(sentence);
+                JOptionPane.showMessageDialog(null, "Se ha desactivado el registro",
+                        "Hey!", JOptionPane.WARNING_MESSAGE);
+                txtDeleteid.setText("");
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
-        
+
         int ancho = 24;
         int alto = 24;
-        
+
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
-        
+
         return icono;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel controls;
+    private javax.swing.JPanel controls2;
     private javax.swing.JPanel head;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -308,6 +413,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel text1;
     private javax.swing.JPanel text2;
     private javax.swing.JPanel text3;
@@ -317,6 +423,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
     private javax.swing.JPanel text7;
     private javax.swing.JPanel text8;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtDeleteid;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEstadoCivil;
     private javax.swing.JTextField txtGradoAcad;
