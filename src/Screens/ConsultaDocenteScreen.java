@@ -221,7 +221,8 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         } catch (SQLiteException e) {
             System.out.println(e.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(ConsultaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ConsultaDocenteScreen.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println(ex);
             JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.WARNING_MESSAGE);
         }
 

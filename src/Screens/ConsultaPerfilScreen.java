@@ -240,10 +240,12 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
                 lbEspecialidad.setText(datos.getString("especialidad"));
             }
         } catch (SQLiteException e) {
-            Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(e);
+            //Logger.getLogger(AltaDocenteScreen.class.getName()).log(Level.SEVERE, null, e);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Registro No encontrado", "Hey!!", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            //Logger.getLogger(ConsultaPerfilScreen.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
