@@ -27,19 +27,158 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        head = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        body = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtid = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCurp = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        head.setBackground(new java.awt.Color(255, 153, 153));
+        head.setPreferredSize(new java.awt.Dimension(640, 40));
+        head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        jLabel7.setText("Alta de Alumnos");
+        head.add(jLabel7);
+
+        add(head, java.awt.BorderLayout.PAGE_START);
+
+        body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(456, 0));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel1.setText("Id");
+        jLabel1.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel1.add(jLabel1);
+
+        txtid.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel1.add(txtid);
+
+        body.add(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setPreferredSize(new java.awt.Dimension(276, 0));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel2.setText("Nombre");
+        jLabel2.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel2.add(jLabel2);
+
+        txtNombre.setNextFocusableComponent(txtid);
+        txtNombre.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel2.add(txtNombre);
+
+        body.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setPreferredSize(new java.awt.Dimension(554, 0));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel3.setText("Direccion");
+        jLabel3.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel3.add(jLabel3);
+
+        txtDireccion.setNextFocusableComponent(txtNombre);
+        txtDireccion.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel3.add(txtDireccion);
+
+        body.add(jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel4.setPreferredSize(new java.awt.Dimension(268, 0));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel4.setText("Correo");
+        jLabel4.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel4.add(jLabel4);
+
+        txtCorreo.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel4.add(txtCorreo);
+
+        body.add(jPanel4);
+
+        jPanel5.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel5.setPreferredSize(new java.awt.Dimension(554, 0));
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel5.setText("Telefono");
+        jLabel5.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel5.add(jLabel5);
+
+        txtTelefono.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel5.add(txtTelefono);
+
+        body.add(jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel6.setPreferredSize(new java.awt.Dimension(265, 10));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel6.setText("CURP");
+        jLabel6.setPreferredSize(new java.awt.Dimension(60, 17));
+        jPanel6.add(jLabel6);
+
+        txtCurp.setPreferredSize(new java.awt.Dimension(200, 30));
+        jPanel6.add(txtCurp);
+
+        body.add(jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(255, 204, 204));
+
+        jButton1.setText("Guardar");
+        jPanel7.add(jButton1);
+
+        body.add(jPanel7);
+
+        add(body, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel body;
+    private javax.swing.JPanel head;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtCurp;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }
