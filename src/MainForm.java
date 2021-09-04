@@ -38,11 +38,14 @@ public class MainForm extends javax.swing.JFrame {
             consultM.setIcon(setIcon("/imagenes/search.png", consultM));
             datosM.setIcon(setIcon("/imagenes/teamwork.png", datosM));
 
-            altaDocentes.setIcon(setIconItem("/imagenes/stamped.png", altaDocentes));
-            altaDatosProfecionales.setIcon(setIconItem("/imagenes/edit.png", altaDatosProfecionales));
+            altaDocentes.setIcon(setIconItem("/imagenes/registro.png", altaDocentes));
+            altaDatosProfecionales.setIcon(setIconItem("/imagenes/dataUpdate.png", altaDatosProfecionales));
             
             consultaDocenteMenu.setIcon(setIconItem("/imagenes/look.png", consultaDocenteMenu));
             ConsultaPerfilMenu.setIcon(setIconItem("/imagenes/look2.png", consultaDocenteMenu));
+            
+            mAlumnos.setIcon(setIcon("/imagenes/alumno.png", mAlumnos));
+            altaAlumnosMOption.setIcon(setIconItem("/imagenes/login.png", altaAlumnosMOption));
             
         } catch (Exception e) {
             System.err.println(e);
@@ -76,11 +79,11 @@ public class MainForm extends javax.swing.JFrame {
         consultM = new javax.swing.JMenu();
         consultaDocenteMenu = new javax.swing.JMenuItem();
         ConsultaPerfilMenu = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        menAltaAlumnos = new javax.swing.JMenuItem();
+        mAlumnos = new javax.swing.JMenu();
+        altaAlumnosMOption = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 600));
 
         container.setLayout(new java.awt.BorderLayout());
         getContentPane().add(container, java.awt.BorderLayout.CENTER);
@@ -136,17 +139,17 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(consultM);
 
-        jMenu1.setText("Alumnos");
+        mAlumnos.setText("Alumnos");
 
-        menAltaAlumnos.setText("Alta de Alumnos");
-        menAltaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+        altaAlumnosMOption.setText("Alta de Alumnos");
+        altaAlumnosMOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menAltaAlumnosActionPerformed(evt);
+                altaAlumnosMOptionActionPerformed(evt);
             }
         });
-        jMenu1.add(menAltaAlumnos);
+        mAlumnos.add(altaAlumnosMOption);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mAlumnos);
 
         setJMenuBar(jMenuBar1);
 
@@ -233,8 +236,8 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_altaDatosProfecionalesActionPerformed
 
-    private void menAltaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menAltaAlumnosActionPerformed
-       if (altaDatosProfecionalesScreen.isVisible()) {
+    private void altaAlumnosMOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaAlumnosMOptionActionPerformed
+       if (altaAlumnos.isVisible()) {
 
         } else {
             inicioScreen.setVisible(false);
@@ -246,7 +249,7 @@ public class MainForm extends javax.swing.JFrame {
             container.add(altaAlumnos);
             altaAlumnos.setVisible(true);
         }
-    }//GEN-LAST:event_menAltaAlumnosActionPerformed
+    }//GEN-LAST:event_altaAlumnosMOptionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,6 +311,7 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ConsultaPerfilMenu;
+    private javax.swing.JMenuItem altaAlumnosMOption;
     private javax.swing.JMenuItem altaDatosProfecionales;
     private javax.swing.JMenuItem altaDocentes;
     private javax.swing.JMenu consultM;
@@ -315,8 +319,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JMenu datosM;
     private javax.swing.JMenu inicioM;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem menAltaAlumnos;
+    private javax.swing.JMenu mAlumnos;
     // End of variables declaration//GEN-END:variables
 }
