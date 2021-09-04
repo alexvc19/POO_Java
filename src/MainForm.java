@@ -6,6 +6,7 @@ import Screens.AltaDatosProfecionalesScreen;
 import Screens.ConsultaDocenteScreen;
 import Screens.ConsultaPerfilScreen;
 import Screens.AltaAlumnosScreen;
+import Screens.MateriasAndCarrerasSecreen;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class MainForm extends javax.swing.JFrame {
     ConsultaDocenteScreen consultaDocenteScreen = new ConsultaDocenteScreen();
     ConsultaPerfilScreen consultaPerfilScreen = new ConsultaPerfilScreen();
     AltaAlumnosScreen altaAlumnos = new AltaAlumnosScreen();
+    MateriasAndCarrerasSecreen materiasAndCarrerasSecreen = new MateriasAndCarrerasSecreen();
 
     public MainForm() {
         initComponents();
@@ -40,13 +42,15 @@ public class MainForm extends javax.swing.JFrame {
 
             altaDocentes.setIcon(setIconItem("/imagenes/registro.png", altaDocentes));
             altaDatosProfecionales.setIcon(setIconItem("/imagenes/dataUpdate.png", altaDatosProfecionales));
-            
+
             consultaDocenteMenu.setIcon(setIconItem("/imagenes/look.png", consultaDocenteMenu));
             ConsultaPerfilMenu.setIcon(setIconItem("/imagenes/look2.png", consultaDocenteMenu));
-            
+
             mAlumnos.setIcon(setIcon("/imagenes/alumno.png", mAlumnos));
             altaAlumnosMOption.setIcon(setIconItem("/imagenes/login.png", altaAlumnosMOption));
             
+            mMaterias.setIcon(setIconItem("/imagenes/lista.png", mMaterias));
+
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -59,6 +63,8 @@ public class MainForm extends javax.swing.JFrame {
         consultaDocenteScreen.setVisible(false);
         consultaPerfilScreen.setVisible(false);
         altaAlumnos.setVisible(false);
+        materiasAndCarrerasSecreen.setVisible(false);
+
     }
 
     /**
@@ -81,6 +87,7 @@ public class MainForm extends javax.swing.JFrame {
         ConsultaPerfilMenu = new javax.swing.JMenuItem();
         mAlumnos = new javax.swing.JMenu();
         altaAlumnosMOption = new javax.swing.JMenuItem();
+        mMaterias = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -141,13 +148,21 @@ public class MainForm extends javax.swing.JFrame {
 
         mAlumnos.setText("Alumnos");
 
-        altaAlumnosMOption.setText("Alta de Alumnos");
+        altaAlumnosMOption.setText("Gestion estudiantes");
         altaAlumnosMOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 altaAlumnosMOptionActionPerformed(evt);
             }
         });
         mAlumnos.add(altaAlumnosMOption);
+
+        mMaterias.setText("Materias");
+        mMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mMateriasActionPerformed(evt);
+            }
+        });
+        mAlumnos.add(mMaterias);
 
         jMenuBar1.add(mAlumnos);
 
@@ -165,6 +180,7 @@ public class MainForm extends javax.swing.JFrame {
             altaDocenteScreen.setVisible(false);
             consultaPerfilScreen.setVisible(false);
             altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(consultaDocenteScreen);
             consultaDocenteScreen.setVisible(true);
@@ -180,6 +196,7 @@ public class MainForm extends javax.swing.JFrame {
             altaDocenteScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(consultaPerfilScreen);
 
@@ -197,6 +214,7 @@ public class MainForm extends javax.swing.JFrame {
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(altaDocenteScreen);
             altaDocenteScreen.setVisible(true);
@@ -214,6 +232,7 @@ public class MainForm extends javax.swing.JFrame {
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(inicioScreen);
             inicioScreen.setVisible(true);
@@ -229,6 +248,7 @@ public class MainForm extends javax.swing.JFrame {
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(altaDatosProfecionalesScreen);
             altaDatosProfecionalesScreen.setVisible(true);
@@ -237,7 +257,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_altaDatosProfecionalesActionPerformed
 
     private void altaAlumnosMOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaAlumnosMOptionActionPerformed
-       if (altaAlumnos.isVisible()) {
+        if (altaAlumnos.isVisible()) {
 
         } else {
             inicioScreen.setVisible(false);
@@ -245,17 +265,36 @@ public class MainForm extends javax.swing.JFrame {
             consultaPerfilScreen.setVisible(false);
             consultaDocenteScreen.setVisible(false);
             altaDatosProfecionalesScreen.setVisible(false);
+            altaAlumnos.setVisible(false);
+            materiasAndCarrerasSecreen.setVisible(false);
 
             container.add(altaAlumnos);
             altaAlumnos.setVisible(true);
         }
     }//GEN-LAST:event_altaAlumnosMOptionActionPerformed
 
+    private void mMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mMateriasActionPerformed
+
+        if (materiasAndCarrerasSecreen.isVisible()) {
+
+        } else {
+            inicioScreen.setVisible(false);
+            altaDocenteScreen.setVisible(false);
+            consultaPerfilScreen.setVisible(false);
+            consultaDocenteScreen.setVisible(false);
+            altaDatosProfecionalesScreen.setVisible(false);
+            altaAlumnos.setVisible(false);
+
+            container.add(materiasAndCarrerasSecreen);
+            materiasAndCarrerasSecreen.setVisible(true);
+        }
+    }//GEN-LAST:event_mMateriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-            
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -321,5 +360,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu inicioM;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mAlumnos;
+    private javax.swing.JMenuItem mMaterias;
     // End of variables declaration//GEN-END:variables
 }

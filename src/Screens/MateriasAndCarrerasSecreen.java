@@ -5,6 +5,11 @@
  */
 package Screens;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author alejandrovelasco
@@ -16,6 +21,9 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
      */
     public MateriasAndCarrerasSecreen() {
         initComponents();
+        btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
+        btnEliminar.setIcon(setIcon("/imagenes/delete.png", btnEliminar));
+        btnActualizar.setIcon(setIcon("/imagenes/actualizar.png", btnActualizar));
     }
 
     /**
@@ -27,10 +35,238 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        head = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
         setLayout(new java.awt.BorderLayout());
+
+        head.setBackground(new java.awt.Color(102, 255, 255));
+        head.setPreferredSize(new java.awt.Dimension(100, 40));
+        head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
+        jLabel1.setText("Materias");
+        head.add(jLabel1);
+
+        add(head, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 200));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 30));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel2.setText("Id Materia");
+        jLabel2.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel1.add(jLabel2);
+
+        jTextField4.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel1.add(jTextField4);
+
+        jPanel2.add(jPanel1);
+
+        jPanel7.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel7.setPreferredSize(new java.awt.Dimension(245, 30));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel7.setText("Nombre Materia");
+        jLabel7.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel7.add(jLabel7);
+
+        jTextField5.setPreferredSize(new java.awt.Dimension(120, 30));
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jTextField5);
+
+        jPanel2.add(jPanel7);
+
+        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel8.setPreferredSize(new java.awt.Dimension(245, 30));
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel8.setText("Semestre");
+        jLabel8.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel8.add(jLabel8);
+
+        jTextField6.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel8.add(jTextField6);
+
+        jPanel2.add(jPanel8);
+
+        jPanel9.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel9.setPreferredSize(new java.awt.Dimension(245, 30));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel9.setText("Id Carrera");
+        jLabel9.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel9.add(jLabel9);
+
+        jTextField7.setPreferredSize(new java.awt.Dimension(120, 30));
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jTextField7);
+
+        jPanel2.add(jPanel9);
+
+        jPanel10.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel10.setPreferredSize(new java.awt.Dimension(245, 30));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel10.setText("Ciclo Escolar");
+        jLabel10.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel10.add(jLabel10);
+
+        jTextField8.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel10.add(jTextField8);
+
+        jPanel2.add(jPanel10);
+
+        jPanel11.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel11.setPreferredSize(new java.awt.Dimension(245, 45));
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        jLabel11.setText("Buscar Materia");
+        jLabel11.setPreferredSize(new java.awt.Dimension(95, 17));
+        jPanel11.add(jLabel11);
+
+        jTextField9.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel11.add(jTextField9);
+
+        jPanel4.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel11.add(jPanel4);
+
+        jPanel12.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(350, 60));
+        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+
+        btnGuardar.setText("Guardar");
+        jPanel12.add(btnGuardar);
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel12.add(btnEliminar);
+
+        btnActualizar.setText("Actualizar");
+        jPanel12.add(btnActualizar);
+
+        jPanel11.add(jPanel12);
+
+        jPanel2.add(jPanel11);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(100, 200));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "nombre", "Semestre", "Id Carrera", "Ciclo Escolar", "Buscar Materia"
+            }
+        ));
+        jTable2.setMaximumSize(new java.awt.Dimension(2147483647, 20));
+        jTable2.setMinimumSize(new java.awt.Dimension(60, 20));
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        add(jPanel3, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    public Icon setIcon(String url, JButton menu){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        
+        int ancho = 24;
+        int alto = 24;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JPanel head;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
