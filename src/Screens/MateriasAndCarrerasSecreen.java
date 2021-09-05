@@ -33,10 +33,15 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         initComponents();
         llenarTabla();
         llenarTablaCarreras();
-        btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
+        try{
+            btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
         btnEliminar.setIcon(setIcon("/imagenes/delete.png", btnEliminar));
         btnActualizar.setIcon(setIcon("/imagenes/actualizar.png", btnActualizar));
         btnRCarrera.setIcon(setIcon("/imagenes/add.png", btnRCarrera));
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
     }
 
     /**
@@ -519,7 +524,6 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         idcarrera = txtIdCarrera.getText();
         cicloEscolar = txtCiclo.getText();
         
-        
         try{
                 String resultado;
                 Conexion cc = new Conexion();
@@ -539,6 +543,9 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
             psG.setString(4, idcarrera);
             psG.setString(5, cicloEscolar);
             psG.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Se ha guardado la informacion",
+                        "Hey!", JOptionPane.INFORMATION_MESSAGE);
 
             psG.close();
             cn.close();
@@ -629,7 +636,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
                 Statement stc = cn.createStatement();
-                ResultSet data = stc.executeQuery("SELECT * FROM materia WHERE id =" + id);
+                ResultSet data = stc.executeQuery("SELECT * FROM carrera WHERE id =" + idcarrera);
 
                 resultado = data.getString(1);
                 System.out.println(resultado);
@@ -650,6 +657,9 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
                     psa.setString(5, id);
 
                     psa.executeUpdate();
+                    
+                    JOptionPane.showMessageDialog(null, "Se ha guardado la informacion",
+                        "Hey!", JOptionPane.INFORMATION_MESSAGE);
 
                     psa.close();
                     cn.close();
@@ -669,7 +679,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
             } catch (Exception e) {
                 Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
-                JOptionPane.showMessageDialog(null, "Id invalido o no existe",
+                JOptionPane.showMessageDialog(null, "Id carrera invalido o no existe",
                         "Hey!", JOptionPane.ERROR_MESSAGE);
             }
         }

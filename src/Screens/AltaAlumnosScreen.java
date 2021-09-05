@@ -478,6 +478,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCurpActionPerformed
 
+    //Actualizar
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         String id, nombre, direccion, correo, telefono, curp, matricula, semestre, idcarrera;
 
@@ -508,36 +509,39 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
                 System.out.println(resultado);
 
                 try {
-                    
-                    if(id.isEmpty()||nombre.isEmpty()||direccion.isEmpty()||
-                            correo.isEmpty()||telefono.isEmpty()||curp.isEmpty()||
-                            matricula.isEmpty()||semestre.isEmpty()||idcarrera.isEmpty()){
+
+                    if (id.isEmpty() || nombre.isEmpty() || direccion.isEmpty()
+                            || correo.isEmpty() || telefono.isEmpty() || curp.isEmpty()
+                            || matricula.isEmpty() || semestre.isEmpty() || idcarrera.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Debes llenar todos los campos",
                                 "Hey!", JOptionPane.ERROR_MESSAGE);
-                    }else{
+                    } else {
                         PreparedStatement psa = cn.prepareStatement("UPDATE alumno SET nombre = ?,"
-                            + " direccion = ?, correo = ?, telefono = ?, curp = ?, matricula = ?,"
-                            + " semestre = ?, id_carrera = ? WHERE id = ?");
+                                + " direccion = ?, correo = ?, telefono = ?, curp = ?, matricula = ?,"
+                                + " semestre = ?, id_carrera = ? WHERE id = ?");
 
-                    psa.setString(1, nombre);
-                    psa.setString(2, direccion);
-                    psa.setString(3, correo);
-                    psa.setString(4, telefono);
-                    psa.setString(5, curp);
-                    psa.setString(6, matricula);
-                    psa.setString(7, semestre);
-                    psa.setString(8, idcarrera);
-                    psa.setString(9, id);
+                        psa.setString(1, nombre);
+                        psa.setString(2, direccion);
+                        psa.setString(3, correo);
+                        psa.setString(4, telefono);
+                        psa.setString(5, curp);
+                        psa.setString(6, matricula);
+                        psa.setString(7, semestre);
+                        psa.setString(8, idcarrera);
+                        psa.setString(9, id);
 
-                    psa.executeUpdate();
+                        psa.executeUpdate();
 
-                    psa.close();
-                    cn.close();
+                        JOptionPane.showMessageDialog(null, "Se ha guardado la informacion",
+                                "Hey!", JOptionPane.INFORMATION_MESSAGE);
 
-                    llenaTabla();
-                    limpiar();
+                        psa.close();
+                        cn.close();
+
+                        llenaTabla();
+                        limpiar();
                     }
-                    
+
                 } catch (Exception ex) {
                     Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
                     if (ex.getMessage().contains("SQLITE_MISMATCH")) {
@@ -556,6 +560,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    //Guardar
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         String id, nombre, direccion, correo, telefono, curp, matricula, semestre, idcarrera;
@@ -585,6 +590,9 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
             pst.setString(8, semestre);
             pst.setString(9, idcarrera);
             pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Se ha guardado la informacion",
+                    "Hey!", JOptionPane.INFORMATION_MESSAGE);
 
             pst.close();
             cn.close();
@@ -700,14 +708,14 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
 
     }//GEN-LAST:event_btnActualizarMouseClicked
-    public Icon setIcon(String url, JButton menu){
+    public Icon setIcon(String url, JButton menu) {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
-        
+
         int ancho = 24;
         int alto = 24;
-        
+
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
-        
+
         return icono;
     }
 
