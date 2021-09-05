@@ -5,10 +5,20 @@
  */
 package Screens;
 
+import Model.Conexion;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.sqlite.SQLiteException;
 
 /**
  *
@@ -21,6 +31,8 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
      */
     public MateriasAndCarrerasSecreen() {
         initComponents();
+        llenarTabla();
+        llenarTablaCarreras();
         btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
         btnEliminar.setIcon(setIcon("/imagenes/delete.png", btnEliminar));
         btnActualizar.setIcon(setIcon("/imagenes/actualizar.png", btnActualizar));
@@ -40,30 +52,37 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtSemestre = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtIdCarrera = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtCiclo = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTableCarreras = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        JTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -88,8 +107,8 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel2.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel1.add(jLabel2);
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel1.add(jTextField4);
+        txtId.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel1.add(txtId);
 
         jPanel2.add(jPanel1);
 
@@ -101,13 +120,13 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel7.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel7.add(jLabel7);
 
-        jTextField5.setPreferredSize(new java.awt.Dimension(120, 30));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setPreferredSize(new java.awt.Dimension(120, 30));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
-        jPanel7.add(jTextField5);
+        jPanel7.add(txtNombre);
 
         jPanel2.add(jPanel7);
 
@@ -119,8 +138,8 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel8.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel8.add(jLabel8);
 
-        jTextField6.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel8.add(jTextField6);
+        txtSemestre.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel8.add(txtSemestre);
 
         jPanel2.add(jPanel8);
 
@@ -132,13 +151,13 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel9.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel9.add(jLabel9);
 
-        jTextField7.setPreferredSize(new java.awt.Dimension(120, 30));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtIdCarrera.setPreferredSize(new java.awt.Dimension(120, 30));
+        txtIdCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtIdCarreraActionPerformed(evt);
             }
         });
-        jPanel9.add(jTextField7);
+        jPanel9.add(txtIdCarrera);
 
         jPanel2.add(jPanel9);
 
@@ -150,8 +169,8 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel10.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel10.add(jLabel10);
 
-        jTextField8.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel10.add(jTextField8);
+        txtCiclo.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel10.add(txtCiclo);
 
         jPanel2.add(jPanel10);
 
@@ -163,17 +182,22 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jLabel11.setPreferredSize(new java.awt.Dimension(95, 17));
         jPanel11.add(jLabel11);
 
-        jTextField9.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel11.add(jTextField9);
+        txtBuscar.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel11.add(txtBuscar);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel11.add(jPanel4);
 
         jPanel12.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel12.setPreferredSize(new java.awt.Dimension(350, 60));
+        jPanel12.setPreferredSize(new java.awt.Dimension(500, 60));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel12.add(btnGuardar);
 
         btnEliminar.setText("Eliminar");
@@ -187,6 +211,14 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         btnActualizar.setText("Actualizar");
         jPanel12.add(btnActualizar);
 
+        jButton1.setText("Registrar Carrera");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jButton1);
+
         jPanel11.add(jPanel12);
 
         jPanel2.add(jPanel11);
@@ -196,7 +228,40 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 200));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel5.setPreferredSize(new java.awt.Dimension(300, 412));
+        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel3.setText("Carreras disponibles");
+        jPanel5.add(jLabel3);
+
+        JTableCarreras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Id Carrera", "Nombre Carrera"
+            }
+        ));
+        JTableCarreras.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        JTableCarreras.setMaximumSize(new java.awt.Dimension(50, 80));
+        JTableCarreras.setPreferredSize(null);
+        jScrollPane1.setViewportView(JTableCarreras);
+
+        jPanel5.add(jScrollPane1);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
+
+        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel4.setText("Materias");
+        jPanel6.add(jLabel4);
+
+        JTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -204,29 +269,208 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "nombre", "Semestre", "Id Carrera", "Ciclo Escolar", "Buscar Materia"
+                "id", "nombre", "Semestre", "Id Carrera", "Ciclo Escolar", "Carrera"
             }
         ));
-        jTable2.setMaximumSize(new java.awt.Dimension(2147483647, 20));
-        jTable2.setMinimumSize(new java.awt.Dimension(60, 20));
-        jScrollPane2.setViewportView(jTable2);
+        JTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        JTable.setMaximumSize(new java.awt.Dimension(2147483647, 20));
+        JTable.setMinimumSize(new java.awt.Dimension(60, 20));
+        JTable.setPreferredSize(null);
+        jScrollPane2.setViewportView(JTable);
 
-        jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel6.add(jScrollPane2);
+
+        jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+    public void limpiar(){
+        txtId.setText("");
+        txtNombre.setText("");
+        txtSemestre.setText("");
+        txtCiclo.setText("");
+        txtIdCarrera.setText("");
+    }
+    public void llenarTablaCarreras(){
+         Conexion cc = new Conexion();
+        Connection cn;
+        try {
+            cn = cc.conectar();
+            Statement stL = cn.createStatement();
+            ResultSet data = stL.executeQuery("SELECT * FROM carrera");
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+            //Model for JTable
+            DefaultTableModel model = new DefaultTableModel();
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+            model.addColumn("Id");
+            model.addColumn("Nombre Carrera");
+
+            String[] fila = new String[2];
+
+            while (data.next()) {
+                //System.out.println(data.getString(1)+ " " + data.getString(2));
+
+                fila[0] = data.getString(1);
+                fila[1] = data.getString(2);
+                model.addRow(fila);
+
+            }
+            JTableCarreras.setModel(model);
+            stL.close();
+            cn.close();
+
+        } catch (SQLiteException ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void llenarTabla(){
+        Conexion cc = new Conexion();
+        Connection cn;
+        try {
+            cn = cc.conectar();
+            Statement st = cn.createStatement();
+            ResultSet data = st.executeQuery("SELECT materia.id,materia.nombre,materia.semestre,materia.ciclo_escolar,carrera.id,carrera.nombre FROM  materia INNER JOIN carrera ON materia.id_carrera = carrera.id");
+
+            //Model for JTable
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("Id");
+            model.addColumn("Nombre Materia");
+            model.addColumn("Semestre");
+            model.addColumn("Ciclo Escolar");
+             model.addColumn("Id Carrera");
+            model.addColumn("Carrera");
+
+            String[] fila = new String[6];
+
+            while (data.next()) {
+                //System.out.println(data.getString(1)+ " " + data.getString(2));
+
+                fila[0] = data.getString(1);
+                fila[1] = data.getString(2);
+                fila[2] = data.getString(3);
+                fila[3] = data.getString(4);
+                fila[4] = data.getString(5);
+                fila[5] = data.getString(6);
+                model.addRow(fila);
+
+            }
+            JTable.setModel(model);
+            st.close();
+            cn.close();
+
+        } catch (SQLiteException ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtIdCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdCarreraActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String id, nombre, semestre, idcarrera, cicloEscolar;
+
+        id = txtId.getText();
+        nombre = txtNombre.getText();
+        semestre = txtSemestre.getText();
+        idcarrera = txtIdCarrera.getText();
+        cicloEscolar = txtCiclo.getText();
+        
+        
+        try{
+                String resultado;
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                Statement stc = cn.createStatement();
+                ResultSet data = stc.executeQuery("SELECT * FROM carrera WHERE id ="+idcarrera);
+
+                resultado = data.getString(1);
+                System.out.println(resultado);
+                
+            try {
+           
+            PreparedStatement psG = cn.prepareStatement("INSERT INTO materia VALUES (?,?,?,?,?)");
+            psG.setString(1, id);
+            psG.setString(2, nombre);
+            psG.setString(3, semestre);
+            psG.setString(4, idcarrera);
+            psG.setString(5, cicloEscolar);
+            psG.executeUpdate();
+
+            psG.close();
+            cn.close();
+
+            llenarTabla();
+            limpiar();
+
+        } catch (Exception e) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
+            if (e.getMessage().contains("SQLITE_MISMATCH")) {
+                JOptionPane.showMessageDialog(null, "Tienes valores nulos o incorrectos",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+
+            }
+            if (e.getMessage().contains("SQLITE_CONSTRAINT_PRIMARYKEY")) {
+                JOptionPane.showMessageDialog(null, "Id materia ya esta en uso",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+
+            }
+            
+        }
+                
+        }catch(Exception ex){
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "El id de la carrera es incorrecto o no existe",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nombreCarrera = JOptionPane.showInputDialog("Ingrese el nombre de la carrera");
+        
+        if(nombreCarrera.equals("")){
+            JOptionPane.showMessageDialog(null, "Valor vacio",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+        }else{
+            try {
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                
+            PreparedStatement psCa = cn.prepareStatement("INSERT INTO carrera(nombre) VALUES(?)");
+            psCa.setString(1,nombreCarrera);
+            psCa.executeUpdate();
+
+            psCa.close();
+            cn.close();
+
+            llenarTablaCarreras();
+            limpiar();
+
+        } catch (Exception e) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
+            
+        }
+        
+        System.out.println(nombreCarrera);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
     public Icon setIcon(String url, JButton menu){
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         
@@ -239,14 +483,19 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable JTable;
+    private javax.swing.JTable JTableCarreras;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel head;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -257,16 +506,18 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCiclo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdCarrera;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtSemestre;
     // End of variables declaration//GEN-END:variables
 }
