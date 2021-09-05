@@ -36,6 +36,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         btnGuardar.setIcon(setIcon("/imagenes/salvar.png", btnGuardar));
         btnEliminar.setIcon(setIcon("/imagenes/delete.png", btnEliminar));
         btnActualizar.setIcon(setIcon("/imagenes/actualizar.png", btnActualizar));
+        btnRCarrera.setIcon(setIcon("/imagenes/add.png", btnRCarrera));
     }
 
     /**
@@ -73,7 +74,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnRCarrera = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -183,13 +184,18 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jPanel11.add(jLabel11);
 
         txtBuscar.setPreferredSize(new java.awt.Dimension(120, 30));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
         jPanel11.add(txtBuscar);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
         jPanel11.add(jPanel4);
 
         jPanel12.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel12.setPreferredSize(new java.awt.Dimension(500, 60));
+        jPanel12.setPreferredSize(new java.awt.Dimension(520, 60));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         btnGuardar.setText("Guardar");
@@ -209,15 +215,20 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jPanel12.add(btnEliminar);
 
         btnActualizar.setText("Actualizar");
-        jPanel12.add(btnActualizar);
-
-        jButton1.setText("Registrar Carrera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton1);
+        jPanel12.add(btnActualizar);
+
+        btnRCarrera.setText("Registrar Carrera");
+        btnRCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRCarreraActionPerformed(evt);
+            }
+        });
+        jPanel12.add(btnRCarrera);
 
         jPanel11.add(jPanel12);
 
@@ -276,6 +287,11 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         JTable.setMaximumSize(new java.awt.Dimension(2147483647, 20));
         JTable.setMinimumSize(new java.awt.Dimension(60, 20));
         JTable.setPreferredSize(null);
+        JTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(JTable);
 
         jPanel6.add(jScrollPane2);
@@ -369,6 +385,55 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         }
     }
     
+    public void buscarTabla(String buscar){
+        Conexion cc = new Conexion();
+        Connection cn;
+        try {
+            cn = cc.conectar();
+            Statement stl = cn.createStatement();
+            ResultSet data = stl.executeQuery("SELECT materia.id,materia.nombre,"
+                    + "materia.semestre,materia.ciclo_escolar,carrera.id,"
+                    + "carrera.nombre FROM  materia INNER JOIN carrera "
+                    + "ON materia.id_carrera = carrera.id WHERE materia.id =" +buscar);
+
+            //Model for JTable
+            DefaultTableModel model = new DefaultTableModel();
+
+            model.addColumn("Id");
+            model.addColumn("Nombre");
+            model.addColumn("Semestre");
+            model.addColumn("Id Carrera");
+            model.addColumn("Ciclo escolar");
+            model.addColumn("Carrera");
+
+            String[] fila = new String[6];
+
+            while (data.next()) {
+                //System.out.println(data.getString(1)+ " " + data.getString(2));
+
+                fila[0] = data.getString(1);
+                fila[1] = data.getString(2);
+                fila[2] = data.getString(3);
+                fila[3] = data.getString(4);
+                fila[4] = data.getString(5);
+                fila[5] = data.getString(6);
+                model.addRow(fila);
+
+            }
+            JTable.setModel(model);
+            stl.close();
+            cn.close();
+
+        } catch (SQLiteException ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().contains("SQLITE_ERROR")) {
+                llenarTabla();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
     
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -380,7 +445,69 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
     }//GEN-LAST:event_txtIdCarreraActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        String id, nombre, semestre, cicloEscolar,idcarrera;
+
+        id = txtId.getText();
+        nombre = txtNombre.getText();
+        semestre = txtSemestre.getText();
+        cicloEscolar=txtCiclo.getText();
+        idcarrera = txtIdCarrera.getText();
+
+        if (id.isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Tienes valores nulos o no has seleccionado un registro",
+                    "Hey!", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+                String resultado;
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                Statement stc = cn.createStatement();
+                ResultSet data = stc.executeQuery("SELECT * FROM materia WHERE id =" + id);
+
+                resultado = data.getString(1);
+                System.out.println(resultado);
+
+                Object[] options = {"Si", "No"};
+                int opcion = JOptionPane.showOptionDialog(null, "¿Esta seguro que desea borrar el registro?", "Advertencia",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
+                if (opcion == 0) {
+
+                    try {
+
+                        PreparedStatement psd = cn.prepareStatement("DELETE FROM materia WHERE id = ?");
+                        psd.setString(1, id);
+
+                        psd.executeUpdate();
+
+                        psd.close();
+                        cn.close();
+
+                        llenarTabla();
+                        limpiar();
+
+                    } catch (Exception e) {
+                        Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
+                        if (e.getMessage().contains("SQLITE_MISMATCH")) {
+                            JOptionPane.showMessageDialog(null, "Tienes valores nulos o incorrectos",
+                                    "Hey!", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                    }
+                } else {
+
+                }
+
+            } catch (Exception e) {
+                Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
+                JOptionPane.showMessageDialog(null, "Id invalido o no existe",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -442,7 +569,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRCarreraActionPerformed
         String nombreCarrera = JOptionPane.showInputDialog("Ingrese el nombre de la carrera");
         
         if(nombreCarrera.equals("")){
@@ -470,7 +597,88 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         
         System.out.println(nombreCarrera);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRCarreraActionPerformed
+
+    private void JTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableMouseClicked
+        int fila = JTable.getSelectedRow();
+        
+        txtId.setText((String) JTable.getValueAt(fila, 0));
+        txtNombre.setText((String) JTable.getValueAt(fila, 1));
+        txtSemestre.setText((String) JTable.getValueAt(fila, 2));
+        txtCiclo.setText((String) JTable.getValueAt(fila, 3));
+        txtIdCarrera.setText((String) JTable.getValueAt(fila, 4));
+    }//GEN-LAST:event_JTableMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        String id, nombre, semestre, cicloEscolar,idcarrera;
+
+        id = txtId.getText();
+        nombre = txtNombre.getText();
+        semestre = txtSemestre.getText();
+        cicloEscolar=txtCiclo.getText();
+        idcarrera = txtIdCarrera.getText();
+
+        if (id.isEmpty()) {
+
+            JOptionPane.showMessageDialog(null, "Tienes valores nulos o no has seleccionado un registro",
+                    "Hey!", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            try {
+                String resultado;
+                Conexion cc = new Conexion();
+                Connection cn = cc.conectar();
+                Statement stc = cn.createStatement();
+                ResultSet data = stc.executeQuery("SELECT * FROM materia WHERE id =" + id);
+
+                resultado = data.getString(1);
+                System.out.println(resultado);
+
+                try {
+                    
+                    if(id.isEmpty()||nombre.isEmpty()||semestre.isEmpty()||cicloEscolar.isEmpty()||idcarrera.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Debes llenar todos los campos",
+                                "Hey!", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        PreparedStatement psa = cn.prepareStatement("UPDATE materia SET nombre = ?,"
+                            + " semestre = ?,id_carrera = ?, ciclo_escolar = ? WHERE id = ?");
+
+                    psa.setString(1, nombre);
+                    psa.setString(2, semestre);
+                    psa.setString(3, idcarrera);
+                    psa.setString(4, cicloEscolar);
+                    psa.setString(5, id);
+
+                    psa.executeUpdate();
+
+                    psa.close();
+                    cn.close();
+
+                    llenarTabla();
+                    limpiar();
+                    }
+                    
+                } catch (Exception ex) {
+                    Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    if (ex.getMessage().contains("SQLITE_MISMATCH")) {
+                        JOptionPane.showMessageDialog(null, "Tienes valores nulos o incorrectos",
+                                "Hey!", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                }
+
+            } catch (Exception e) {
+                Logger.getLogger(AltaAlumnosScreen.class.getName()).log(Level.SEVERE, null, e);
+                JOptionPane.showMessageDialog(null, "Id invalido o no existe",
+                        "Hey!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        buscarTabla(txtBuscar.getText());
+    }//GEN-LAST:event_txtBuscarKeyReleased
     public Icon setIcon(String url, JButton menu){
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         
@@ -488,8 +696,8 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRCarrera;
     private javax.swing.JPanel head;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
