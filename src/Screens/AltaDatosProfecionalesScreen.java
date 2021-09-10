@@ -68,7 +68,8 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        head.setBackground(new java.awt.Color(102, 255, 153));
+        head.setBackground(new java.awt.Color(255, 255, 255));
+        head.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
@@ -77,10 +78,10 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         add(head, java.awt.BorderLayout.PAGE_START);
 
-        body.setBackground(new java.awt.Color(204, 255, 204));
+        body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel5.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel5.setPreferredSize(new java.awt.Dimension(490, 44));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
@@ -95,7 +96,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         body.add(jPanel5);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel1.setPreferredSize(new java.awt.Dimension(490, 44));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
@@ -110,7 +111,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         body.add(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel2.setPreferredSize(new java.awt.Dimension(490, 44));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
@@ -125,7 +126,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         body.add(jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel3.setPreferredSize(new java.awt.Dimension(490, 44));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
@@ -140,7 +141,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         body.add(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setMaximumSize(new java.awt.Dimension(32767, 44));
         jPanel4.setPreferredSize(new java.awt.Dimension(490, 44));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
@@ -155,7 +156,7 @@ public class AltaDatosProfecionalesScreen extends javax.swing.JPanel {
 
         body.add(jPanel4);
 
-        controls.setBackground(new java.awt.Color(204, 255, 204));
+        controls.setBackground(new java.awt.Color(255, 255, 255));
         controls.setMaximumSize(new java.awt.Dimension(32767, 44));
         controls.setPreferredSize(new java.awt.Dimension(490, 44));
         controls.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));

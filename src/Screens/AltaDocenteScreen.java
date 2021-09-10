@@ -85,9 +85,11 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtDeleteid = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
-        head.setBackground(new java.awt.Color(153, 153, 255));
+        head.setBackground(new java.awt.Color(255, 255, 255));
+        head.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
@@ -96,10 +98,10 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         add(head, java.awt.BorderLayout.PAGE_START);
 
-        body.setBackground(new java.awt.Color(204, 204, 255));
+        body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
-        text1.setBackground(new java.awt.Color(204, 204, 255));
+        text1.setBackground(new java.awt.Color(255, 255, 255));
         text1.setMaximumSize(new java.awt.Dimension(32767, 40));
         text1.setMinimumSize(new java.awt.Dimension(32767, 30));
         text1.setPreferredSize(new java.awt.Dimension(300, 45));
@@ -115,7 +117,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(text1);
 
-        text2.setBackground(new java.awt.Color(204, 204, 255));
+        text2.setBackground(new java.awt.Color(255, 255, 255));
         text2.setMaximumSize(new java.awt.Dimension(32767, 40));
         text2.setMinimumSize(new java.awt.Dimension(32767, 44));
         text2.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -129,7 +131,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtNombre.setPreferredSize(new java.awt.Dimension(200, 30));
         text2.add(txtNombre);
 
-        text3.setBackground(new java.awt.Color(204, 204, 255));
+        text3.setBackground(new java.awt.Color(255, 255, 255));
         text3.setMaximumSize(new java.awt.Dimension(32767, 40));
         text3.setMinimumSize(new java.awt.Dimension(32767, 44));
         text3.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -147,7 +149,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(text2);
 
-        text4.setBackground(new java.awt.Color(204, 204, 255));
+        text4.setBackground(new java.awt.Color(255, 255, 255));
         text4.setMaximumSize(new java.awt.Dimension(32767, 40));
         text4.setMinimumSize(new java.awt.Dimension(32767, 44));
         text4.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -161,7 +163,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtRfc.setPreferredSize(new java.awt.Dimension(200, 30));
         text4.add(txtRfc);
 
-        text5.setBackground(new java.awt.Color(204, 204, 255));
+        text5.setBackground(new java.awt.Color(255, 255, 255));
         text5.setMaximumSize(new java.awt.Dimension(32767, 40));
         text5.setMinimumSize(new java.awt.Dimension(32767, 44));
         text5.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -179,7 +181,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(text4);
 
-        text6.setBackground(new java.awt.Color(204, 204, 255));
+        text6.setBackground(new java.awt.Color(255, 255, 255));
         text6.setMaximumSize(new java.awt.Dimension(32767, 40));
         text6.setMinimumSize(new java.awt.Dimension(32767, 44));
         text6.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -193,7 +195,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         txtEstadoCivil.setPreferredSize(new java.awt.Dimension(200, 30));
         text6.add(txtEstadoCivil);
 
-        text7.setBackground(new java.awt.Color(204, 204, 255));
+        text7.setBackground(new java.awt.Color(255, 255, 255));
         text7.setMaximumSize(new java.awt.Dimension(32767, 40));
         text7.setMinimumSize(new java.awt.Dimension(32767, 44));
         text7.setPreferredSize(new java.awt.Dimension(300, 43));
@@ -211,7 +213,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(text6);
 
-        text8.setBackground(new java.awt.Color(204, 204, 255));
+        text8.setBackground(new java.awt.Color(255, 255, 255));
         text8.setMaximumSize(new java.awt.Dimension(32767, 40));
         text8.setMinimumSize(new java.awt.Dimension(32767, 30));
         text8.setPreferredSize(new java.awt.Dimension(300, 45));
@@ -228,7 +230,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
 
         body.add(text8);
 
-        controls.setBackground(new java.awt.Color(204, 204, 255));
+        controls.setBackground(new java.awt.Color(255, 255, 255));
         controls.setMaximumSize(new java.awt.Dimension(32767, 50));
         controls.setMinimumSize(new java.awt.Dimension(97, 50));
         controls.setPreferredSize(new java.awt.Dimension(97, 50));
@@ -250,7 +252,7 @@ public class AltaDocenteScreen extends javax.swing.JPanel {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
         body.add(jSeparator1);
 
-        controls2.setBackground(new java.awt.Color(204, 204, 255));
+        controls2.setBackground(new java.awt.Color(255, 255, 255));
         controls2.setMaximumSize(new java.awt.Dimension(32767, 50));
         controls2.setMinimumSize(new java.awt.Dimension(97, 50));
         controls2.setPreferredSize(new java.awt.Dimension(97, 50));

@@ -85,9 +85,11 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         jLabel3.setText("jLabel3");
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
@@ -99,7 +101,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         body.setBackground(new java.awt.Color(255, 204, 255));
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
-        searchPane.setBackground(new java.awt.Color(255, 204, 255));
+        searchPane.setBackground(new java.awt.Color(255, 255, 255));
         searchPane.setMaximumSize(new java.awt.Dimension(32767, 35));
 
         jLabel2.setText("Buscar ID");
@@ -110,7 +112,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         body.add(searchPane);
 
-        controlsPane.setBackground(new java.awt.Color(255, 204, 255));
+        controlsPane.setBackground(new java.awt.Color(255, 255, 255));
         controlsPane.setMaximumSize(new java.awt.Dimension(32767, 35));
 
         btnBuscar.setText("Buscar");
@@ -131,7 +133,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         body.add(controlsPane);
 
-        controlsPane1.setBackground(new java.awt.Color(255, 204, 255));
+        controlsPane1.setBackground(new java.awt.Color(255, 255, 255));
         controlsPane1.setMaximumSize(new java.awt.Dimension(32767, 35));
         body.add(controlsPane1);
 
@@ -139,7 +141,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         panel2.setLayout(new javax.swing.BoxLayout(panel2, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel4.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -149,7 +151,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         panel2.add(jPanel4);
 
-        jPanel6.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -159,7 +161,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         panel2.add(jPanel6);
 
-        jPanel9.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -169,7 +171,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         panel2.add(jPanel9);
 
-        jPanel10.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel18.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -181,7 +183,7 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
 
         jPanel2.add(panel2, java.awt.BorderLayout.CENTER);
 
-        jPanel12.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel22.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -189,10 +191,10 @@ public class ConsultaPerfilScreen extends javax.swing.JPanel {
         jPanel12.add(jLabel22);
         jPanel12.add(lbId);
 
-        jPanel11.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
-        jPanel3.setBackground(new java.awt.Color(219, 174, 219));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N

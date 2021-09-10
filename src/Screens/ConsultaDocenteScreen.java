@@ -78,10 +78,10 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         lbTelefono = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 153));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
-        head.setBackground(new java.awt.Color(255, 255, 102));
+        head.setBackground(new java.awt.Color(255, 255, 255));
         head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
@@ -93,7 +93,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         body.setBackground(new java.awt.Color(255, 255, 204));
         body.setLayout(new javax.swing.BoxLayout(body, javax.swing.BoxLayout.PAGE_AXIS));
 
-        searchPane.setBackground(new java.awt.Color(255, 255, 204));
+        searchPane.setBackground(new java.awt.Color(255, 255, 255));
         searchPane.setMaximumSize(new java.awt.Dimension(32767, 44));
         searchPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
@@ -105,7 +105,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         body.add(searchPane);
 
-        controlsPane.setBackground(new java.awt.Color(255, 255, 204));
+        controlsPane.setBackground(new java.awt.Color(255, 255, 255));
         controlsPane.setMaximumSize(new java.awt.Dimension(32767, 44));
         controlsPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
@@ -129,7 +129,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         lbSucces.setBackground(new java.awt.Color(0, 255, 0));
         lbSucces.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
@@ -137,7 +137,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.add(jPanel7);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -147,7 +147,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -157,7 +157,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.add(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -167,7 +167,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.add(jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -177,7 +177,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
 
         jPanel1.add(jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N

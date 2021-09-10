@@ -92,7 +92,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        head.setBackground(new java.awt.Color(102, 255, 255));
+        head.setBackground(new java.awt.Color(255, 255, 255));
         head.setPreferredSize(new java.awt.Dimension(100, 40));
         head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -105,7 +105,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         jPanel2.setPreferredSize(new java.awt.Dimension(100, 200));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 30));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -118,7 +118,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         jPanel2.add(jPanel1);
 
-        jPanel7.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setPreferredSize(new java.awt.Dimension(245, 30));
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -136,7 +136,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         jPanel2.add(jPanel7);
 
-        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setPreferredSize(new java.awt.Dimension(245, 30));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -149,7 +149,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         jPanel2.add(jPanel8);
 
-        jPanel9.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setPreferredSize(new java.awt.Dimension(245, 30));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -167,7 +167,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         jPanel2.add(jPanel9);
 
-        jPanel10.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setPreferredSize(new java.awt.Dimension(245, 30));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -180,7 +180,7 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
 
         jPanel2.add(jPanel10);
 
-        jPanel11.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setPreferredSize(new java.awt.Dimension(245, 45));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -196,10 +196,10 @@ public class MateriasAndCarrerasSecreen extends javax.swing.JPanel {
         });
         jPanel11.add(txtBuscar);
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.add(jPanel4);
 
-        jPanel12.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setPreferredSize(new java.awt.Dimension(520, 60));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 

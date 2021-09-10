@@ -49,7 +49,7 @@ public class InicioScreen extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,13 +58,14 @@ public class InicioScreen extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(163, 163, 163));
 
         jLabel2.setText("Desarrollado por Cristian Alejandro Velasco Cernas");
         jPanel2.add(jLabel2);
 
         add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
+        body.setBackground(new java.awt.Color(255, 255, 255));
         body.add(logotype);
 
         add(body, java.awt.BorderLayout.CENTER);
@@ -73,7 +74,7 @@ public class InicioScreen extends javax.swing.JPanel {
         public Icon setIcon(String url, JLabel menu){
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
         
-        int ancho = 150;
+        int ancho = 290;
         int alto = 200;
         
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));

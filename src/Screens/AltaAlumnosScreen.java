@@ -211,9 +211,10 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        head.setBackground(new java.awt.Color(255, 153, 153));
+        head.setBackground(new java.awt.Color(255, 255, 255));
+        head.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         head.setPreferredSize(new java.awt.Dimension(640, 40));
-        head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
+        head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 7));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel7.setText("Alta de Alumnos");
@@ -223,11 +224,11 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel11.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setPreferredSize(new java.awt.Dimension(300, 300));
         jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel12.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel9.setText("Id");
@@ -244,7 +245,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel11.add(jPanel12);
 
-        jPanel15.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel11.setText("Direccion");
@@ -256,7 +257,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel11.add(jPanel15);
 
-        jPanel16.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel12.setText("Telefono");
@@ -268,7 +269,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel11.add(jPanel16);
 
-        jPanel17.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
         jPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel13.setText("Matricula");
@@ -280,7 +281,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel11.add(jPanel17);
 
-        jPanel18.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel14.setText("Semestre");
@@ -297,9 +298,9 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel11.add(jPanel18);
 
-        jPanel19.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setPreferredSize(new java.awt.Dimension(317, 50));
-        jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
+        jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jLabel1.setText("Buscar Alumno por ID");
         jPanel19.add(jLabel1);
@@ -322,11 +323,11 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel10.add(jPanel11);
 
-        jPanel13.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setPreferredSize(new java.awt.Dimension(300, 30));
         jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel14.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setMinimumSize(new java.awt.Dimension(136, 33));
         jPanel14.setPreferredSize(new java.awt.Dimension(300, 20));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10);
@@ -347,7 +348,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel14);
 
-        jPanel20.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setMinimumSize(new java.awt.Dimension(136, 33));
         jPanel20.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel20.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
@@ -361,7 +362,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel20);
 
-        jPanel23.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
         jPanel23.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel23.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -379,7 +380,7 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel23);
 
-        jPanel24.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
         jPanel24.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel24.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
@@ -392,12 +393,12 @@ public class AltaAlumnosScreen extends javax.swing.JPanel {
 
         jPanel13.add(jPanel24);
 
-        jPanel25.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
         jPanel25.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel25.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
         jPanel13.add(jPanel25);
 
-        jPanel26.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
         jPanel26.setPreferredSize(new java.awt.Dimension(300, 20));
         jPanel26.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
