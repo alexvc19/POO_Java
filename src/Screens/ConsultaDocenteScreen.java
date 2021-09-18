@@ -82,6 +82,7 @@ public class ConsultaDocenteScreen extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         head.setBackground(new java.awt.Color(255, 255, 255));
+        head.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         head.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 10));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
